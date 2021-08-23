@@ -30,6 +30,7 @@ function Navbar() {
 							</div>
 						);
 					})}
+					<img src='https://okkot.com/images/common/top_arrow.png'></img>
 				</div>
 			</div>
 			<div className='main_logo'>
