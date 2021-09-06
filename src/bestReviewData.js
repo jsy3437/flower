@@ -1,31 +1,65 @@
 export default [
-	{
-		id: 0,
-		title: '[플로리스트 추천] LITTLE FOREST - L',
-		email: 'ba***',
-		src: 'https://static.okkot.com/images/w_300/B2F30191-A58E-40E8-855F-1AB4ACDC7132-1624480973248-c4aa5fdb-0c4f-468f-96c2-bf451cdf8647.jpeg',
-		content: '여러 꽃을 한번에 볼 수 있고 조합이 너무 예뻤어요 여름 느낌나서 좋았습니다',
-	},
-	{
-		id: 1,
-		title: '금계국',
-		email: '1k***',
-		src: 'https://static.okkot.com/images/w_300/3D210D77-3E70-4C63-9ADE-6EBC2711CDFA-1623512467167-58e28180-6d5e-4b12-bb2b-dd7bbde6d5bc.jpeg',
-		content: '금계국 꽃말 답게 기부니가 좋아지네요. 상쾌한 소식. 기다려 보겠습니다~ㅎㅎ',
-	},
-	{
-		id: 2,
-		title: '소국 - 마가렛',
-		email: '1k***',
-		src: 'https://static.okkot.com/images/w_300/49A9FE21-3A28-49F5-AB22-8B72F27E3CEC-1623512948103-2887cb99-5348-4c47-ba03-950739210603.jpeg',
-		content:
-			'소국이랑 마가렛 사이 느낌의 소국인건가요 ㅎㅎ 만화에 나올 법한 그런 비쥬얼. 나는 꽃이다.. 그런 말을 하는 것 같은 그런 들꽃 느낌~~! 넘 행복하니 좋아요.',
-	},
-	{
-		id: 3,
-		title: '올라야 (레이스 플라워)',
-		email: 'xo***',
-		src: 'https://static.okkot.com/images/w_300/6670DB5D-F4CB-408B-8758-9381004066A5-1624429404711-cd77257d-ee10-4db6-8e00-f3a79092504f.jpeg',
-		content: '올라야 너무 이뻐요!! 진짜 은근 줄기도 튼튼하면서 여리여리한 레이스꽃',
-	},
+	[
+		{
+			id: 0,
+			title: '[플로리스트 추천] LITTLE FOREST - L',
+			email: 'ba***',
+			src: 'https://static.okkot.com/images/w_300/B2F30191-A58E-40E8-855F-1AB4ACDC7132-1624480973248-c4aa5fdb-0c4f-468f-96c2-bf451cdf8647.jpeg',
+			content: '여러 꽃을 한번에 볼 수 있고 조합이 너무 예뻤어요 여름 느낌나서 좋았습니다',
+		},
+		{
+			id: 1,
+			title: '금계국',
+			email: '1k***',
+			src: 'https://static.okkot.com/images/w_300/3D210D77-3E70-4C63-9ADE-6EBC2711CDFA-1623512467167-58e28180-6d5e-4b12-bb2b-dd7bbde6d5bc.jpeg',
+			content: '금계국 꽃말 답게 기부니가 좋아지네요. 상쾌한 소식. 기다려 보겠습니다~ㅎㅎ',
+		},
+		{
+			id: 2,
+			title: '소국 - 마가렛',
+			email: '1k***',
+			src: 'https://static.okkot.com/images/w_300/49A9FE21-3A28-49F5-AB22-8B72F27E3CEC-1623512948103-2887cb99-5348-4c47-ba03-950739210603.jpeg',
+			content:
+				'소국이랑 마가렛 사이 느낌의 소국인건가요 ㅎㅎ 만화에 나올 법한 그런 비쥬얼. 나는 꽃이다.. 그런 말을 하는 것 같은 그런 들꽃 느낌~~! 넘 행복하니 좋아요.',
+		},
+		{
+			id: 3,
+			title: '올라야 (레이스 플라워)',
+			email: 'xo***',
+			src: 'https://static.okkot.com/images/w_300/6670DB5D-F4CB-408B-8758-9381004066A5-1624429404711-cd77257d-ee10-4db6-8e00-f3a79092504f.jpeg',
+			content: '올라야 너무 이뻐요!! 진짜 은근 줄기도 튼튼하면서 여리여리한 레이스꽃',
+		},
+	],
+	[
+		{
+			id: 4,
+			title: '백합 - 르네브',
+			email: 'sm***',
+			src: 'https://static.okkot.com/images/w_300/20210823_112551-1629721220916-b954c02b-e5d0-4aea-b55c-f2ae03b4d440.jpg',
+			content:
+				'엄청 싱싱한 꽃을 보내주셔서 오래오래 볼 수 있을것 같아요. 3일정도 봉우리로 있다가 4일째 되는날 꽃이 피더니 지금은 활짝 펴서 향기가 진동하네요. 비가 와서 향이 더 진한 것 같고 꽃술은 제거했어요. 색감이 화려하고 얼굴이 커서 센터피스에 2~3대만 꽂아도 분위기를 압도하네요',
+		},
+		{
+			id: 5,
+			title: '실 거베라 - 화이트',
+			email: 'ss***',
+			src: 'https://static.okkot.com/images/w_300/9A8599E9-61AA-4B49-8644-76DCF20B07A4-1624267183680-3031b672-217e-4f79-87e5-437cf94884ed.jpeg',
+			content: '엄청 커다란 키에 깜짝 놀랐어요 실 거베라 참 매력적이네요',
+		},
+		{
+			id: 6,
+			title: '해바라기 - 테디베어(오렌지)',
+			email: 'ka***',
+			src: 'https://static.okkot.com/images/w_300/20210828_235746-1630210583391-29422d96-2c97-4a16-9c43-1f670ad9b968.jpg',
+			content: '해바라기 비주얼이 넘나 아름다워요 비록 고개숙인 해바라기가 두 대정도 있었지만 세 대는 예뻤습니다',
+		},
+		{
+			id: 7,
+			title: '스모그트리',
+			email: '1k***',
+			src: 'https://static.okkot.com/images/w_300/0CBA43F5-6942-45C9-90D3-3BCB6B19A6B9-1623510780308-d80b941d-c984-4874-8442-9fa802992b89.jpeg',
+			content:
+				'옹!! 전번에 다른 오늘의꽃 상점에서 산거랑 비교하면 가지 자체가 두꺼워요 이점 비교해서 참조해서 각각 필요에 따라 구매하시면 될 것 같아요. 이뿌네요. 처음에는 이런 갈색이다가 시간이 지나면서 보라색을 띄게 되나..봐요~! ㅎㅎ 희망의 내일 이란 뜻이래용. 보라색으로 변해가는데 제가 워낙 핑크랑 보라색을 좋아하는 핑크 공주이다 보니 이 스모그트리를 보면서 든 생각이.. 강수지 언니의 보랏빛 향기 노래 같은 그런 희망의 내일을 꿈꿔봅니당.. 동화속 꽃 안개라면 스모그트리 같을 것 같은 그런 느낌적 느낌~~',
+		},
+	],
 ];
