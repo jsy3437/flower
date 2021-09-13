@@ -18,6 +18,7 @@ function Navbar() {
 
 	return (
 		<div>
+			{/* main navbar */}
 			<div className='main_navbar'>
 				<div className='navbar'>
 					<div className='navbar_menu'>
@@ -48,13 +49,6 @@ function Navbar() {
 									</ul>
 								</div>
 							</li>
-							{/* {navbarMenus.map(function (navbarMenu, i) {
-							return (
-								<div className='login' key={i}>
-									{navbarMenu}
-								</div>
-							);
-						})} */}
 						</div>
 					</div>
 				</div>
@@ -88,6 +82,8 @@ function Navbar() {
 					</div>
 				</div>
 			</div>
+
+			{/* mobile navbar */}
 			<div className='mobile_navbar'>
 				<div className='mobile_logo'>
 					<div className='mobile_logo_img'>
@@ -97,6 +93,44 @@ function Navbar() {
 						<div className='hamburger_icon'></div>
 					</div>
 				</div>
+			</div>
+
+			{/* mobile navbar menu */}
+			<div className='mobile_navbar_menu'>
+				<div className='mobile_user_login'>
+					로그인 해주세요
+					<div className='mobile_navbar_close'></div>
+				</div>
+				<div className='mobile_user_menu'>
+					<div className='mobile_my_page'>마이페이지</div>
+					<div className='mobile_cart'>장바구니</div>
+				</div>
+				<div className='mobile_categories'>
+					<div className='mobile_search_bar'>
+						<div className='search_bar'>
+							<input className='searchBar' type='text' placeholder='상품과 브랜드를 검색해 주세요!'></input>
+							<div className='searchBtn'>
+								<img src={SearchImg} />
+							</div>
+						</div>
+					</div>
+					<div className='mobile_store_bnt'></div>
+					<div className='mobile_category'>
+						{categories.map(function (category, i) {
+							return (
+								<ul>
+									<li key={i}>{category}</li>
+								</ul>
+							);
+						})}
+					</div>
+				</div>
+				<div className='mobile_user_menu'>
+					<div className='mobile_notice'>공지사항</div>
+					<div className='mobile_faq'>FAQ</div>
+					<div className='mobile_service'>고객센터</div>
+				</div>
+				<div className='mobile_login_bnt'>로그인</div>
 			</div>
 		</div>
 	);

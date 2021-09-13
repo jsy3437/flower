@@ -137,7 +137,7 @@ body {
 }
 
 .navbar_menu_delivery {
-	width: 160px;
+	/* width: 160px; */
 	height: 22px;
 	display: flex;
 	border: 1px solid rgb(224, 223, 223);
@@ -188,7 +188,6 @@ body {
 li {
 	font-size: var(--font-medium);
 	font-weight: var(--weight-bold);
-	/* list-style: none; */
 }
 
 .search_bar {
@@ -203,7 +202,7 @@ li {
 }
 
 .searchBar {
-	width: 190px;
+	width: 200px;
 	padding: 5px;
 	border: none;
 }
@@ -214,6 +213,11 @@ li {
 
 .button {
 	border: 0;
+}
+
+input::placeholder {
+	font-weight: var(--weight-semi-bold);
+	background-color: #f6f6f6;
 }
 
 /* navbar hamburger 기본*/
@@ -265,11 +269,163 @@ li {
 	transform: translateY(-7px) rotate(45deg);
 }
 
-/*  */
 /* mobile navbar */
 
 .mobile_navbar {
 	display: none;
+}
+
+.mobile_navbar_menu {
+	display: none;
+	width: 556px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	background-color: rgb(255, 255, 255);
+}
+
+.mobile_user_login {
+	padding: 1px 16px 18px 16px;
+	text-align: start;
+	font-size: var(--font-medium);
+	font-weight: var(--weight-bold);
+}
+
+.mobile_navbar_close {
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+}
+
+.mobile_navbar_close::after,
+.mobile_navbar_close::before {
+	content: '';
+	background-color: #c1c1c1;
+	width: 3px;
+	height: 24px;
+	position: absolute;
+	top: 15px;
+	right: 30px;
+}
+
+.mobile_navbar_close::after {
+	transform: rotate(45deg);
+}
+.mobile_navbar_close::before {
+	transform: rotate(-45deg);
+}
+
+.mobile_user_menu {
+	display: flex;
+}
+
+.mobile_my_page,
+.mobile_cart {
+	padding: 16px 8px;
+	font-size: var(--font-small);
+	font-weight: var(--weight-semi-bold);
+	width: 50%;
+	height: 50px;
+	position: relative;
+	text-align: center;
+	line-height: 80px;
+}
+.mobile_my_page::before,
+.mobile_cart::before {
+	content: '';
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 16px;
+	left: 126px;
+}
+.mobile_my_page::before {
+	background-image: url('./images/ic-human.png');
+}
+.mobile_cart::before {
+	background-image: url('./images/ic-cart-black.png');
+}
+
+.mobile_search_bar {
+	margin: 15px 24px;
+}
+
+.mobile_categories {
+	border-bottom: 1px solid rgb(211, 211, 211);
+	border-top: 1px solid rgb(211, 211, 211);
+	/* calc css계산식 넣는곳 */
+	height: calc(100vh - 326px);
+	min-height: 338px;
+}
+
+.mobile_store_bnt::after {
+	content: '';
+	position: absolute;
+	width: 17px;
+	height: 17px;
+	transform: rotate(180deg);
+	right: 19px;
+	top: 210px;
+	background-image: url('./images/ic-left-arrow-black.svg');
+}
+
+.mobile_category > ul {
+	padding: 12px 32px;
+	text-align: start;
+}
+
+.mobile_category > ul > li {
+	font-size: 16px;
+	color: var(--color-dark-grey);
+}
+
+.mobile_notice,
+.mobile_faq,
+.mobile_service {
+	padding: 16px 8px;
+	font-size: var(--font-small);
+	font-weight: var(--weight-bold);
+	width: 33%;
+	height: 50px;
+	position: relative;
+	text-align: center;
+	line-height: 80px;
+}
+
+.mobile_notice::before,
+.mobile_faq::before,
+.mobile_service::before {
+	content: '';
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: 16px;
+	left: 80px;
+}
+
+.mobile_notice::before {
+	background-image: url('./images/ic-alrim.png');
+}
+
+.mobile_faq::before {
+	background-image: url('./images/ic-information.png');
+}
+
+.mobile_service::before {
+	background-image: url('./images/ic-service.png');
+}
+
+.mobile_login_bnt {
+	border: 1px solid #c2c2c2;
+	border-radius: 3px;
+	padding: 9px 12px;
+	width: 200px;
+	background-color: white;
+	margin: auto;
+	color: #7b7b7b;
+	font-weight: var(--weight-semi-bold);
 }
 
 /* banner */
@@ -284,7 +440,9 @@ li {
 .imgSlider {
 	display: flex;
 	justify-content: center;
-	width: 1449px;
+	align-items: center;
+	/* width: 800px; */
+	max-width: 1449px;
 	height: 500px;
 	flex-wrap: nowrap;
 	overflow: hidden;
@@ -293,14 +451,7 @@ li {
 .imgSlider_img {
 	position: absolute;
 	display: flex;
-	width: 1449px;
-	height: 500px;
 	background-repeat: no-repeat;
-	/* opacity: 0;
-	animation: fadeOut 1s;
-	-webkit-animation: fadeOut 1s;
-	transition: all 500ms;
-	animation-fill-mode: forwards; */
 }
 
 .imgSlider_img.fade {
@@ -336,7 +487,7 @@ li {
 
 .prev-button,
 .next-button {
-	z-index: 1;
+	z-index: 0.5;
 	width: 56px;
 	height: 56px;
 	opacity: 30%;
@@ -397,6 +548,8 @@ li {
 	align-items: center;
 	justify-content: space-between;
 	width: 100px;
+	background-size: contain;
+	background-position: center;
 }
 
 .bnt-prev {
@@ -404,7 +557,7 @@ li {
 	width: 50px;
 	height: 30px;
 	border: none;
-	background-position: center;
+	background-position-y: -5px;
 	background-position-x: -3px;
 	background-size: 40px 40px;
 }
@@ -421,12 +574,13 @@ li {
 }
 
 /* card info */
+
 .info,
 .review {
 	display: flex;
-	justify-content: center;
-	width: 1180px;
-	height: 406px;
+	justify-content: space-between;
+	/* width: 1180px; */
+	/* height: 406px; */
 	padding: 12px;
 }
 
@@ -436,12 +590,13 @@ li {
 	height: 278px;
 	overflow: hidden;
 	border-radius: 10px;
+	object-fit: contain;
 }
 
 .info_img,
 .review_img {
-	width: 278px;
-	height: 278px;
+	width: 100%;
+	height: 100%;
 	object-fit: cover;
 	border-radius: 10px;
 	transition: all 0.1s linear;
@@ -453,7 +608,7 @@ li {
 
 .info_infoText {
 	padding: 12px;
-	width: 270px;
+	max-width: 270px;
 }
 
 .info_name {
@@ -723,5 +878,59 @@ li {
 		position: absolute;
 		top: 8px;
 		right: 0;
+	}
+}
+@media screen and (max-width: 900px) {
+	.imgSlider_img > img {
+		width: 100%;
+		height: auto;
+	}
+
+	.card {
+		width: 100%;
+	}
+
+	.card_container {
+		min-height: calc(100vh - 345px);
+	}
+
+	.app_container {
+		margin: 0;
+	}
+
+	.info {
+		padding: 0;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.info_card,
+	.review_card {
+		max-width: 200px;
+		margin: 0.5%;
+	}
+
+	.info_img_box,
+	.review_img_box {
+		max-width: 200px;
+		max-height: 200px;
+	}
+
+	.info_img {
+	}
+
+	p {
+		width: 200px;
+	}
+
+	.info_infoText,
+	.review_text_box,
+	.review_content {
+		max-width: 170px;
+	}
+
+	.coupon {
+		width: 100%;
+		margin-top: 50px;
 	}
 }

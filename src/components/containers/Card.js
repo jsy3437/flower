@@ -149,7 +149,9 @@ function Card() {
 			</div>
 
 			{/* 쿠폰 이미지 */}
-			<img src='https://static.okkot.com/images/banner/쿠폰1-1625463353879-35759ec7-5e9a-4ef8-9a8d-9b3c8abc82d0.jpg'></img>
+			<img
+				className='coupon'
+				src='https://static.okkot.com/images/banner/쿠폰1-1625463353879-35759ec7-5e9a-4ef8-9a8d-9b3c8abc82d0.jpg'></img>
 
 			{/* Best Review */}
 			<div className='bestProduct'>
