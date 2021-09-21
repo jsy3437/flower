@@ -8,6 +8,7 @@ import banner5 from '../../images/banner5.jpg';
 import banner6 from '../../images/banner6.jpg';
 
 function Banner() {
+	// number 하나로 해서 고치기
 	let [number, setNumber] = useState([0, 0]);
 	let banner = [banner1, banner2, banner3, banner4, banner5, banner6];
 

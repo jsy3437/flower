@@ -12,93 +12,79 @@ function Card() {
 	let [bestReviewFlower, setBestReviewFlower] = useState(ReviewData[0]);
 	let [floristFlower, setFloristFlower] = useState(floristData[0]);
 
-	// 각 card div 넣을 배열
-	let bestProductItem = [];
-	let newFlowerItem = [];
-	let bestReviewFlowerItem = [];
-	let floristFlowerItem = [];
-
 	// next, prev 버튼
 	// data를 2차원 배열로 만들어서 스테이트 기본값0주고 next버튼 누르면 스테이트 값이 +1증가
 	// 그러면 1번 배열이 나온다
 
 	// Best Product card
-	bestFlower.map((info, i) => {
-		bestProductItem.push(
-			<div className='info_card'>
-				<div className='info_img_box'>
-					<img src={info.src} class='info_img' width='100%' />
-				</div>
-				<div className='info_infoText'>
-					<p className='info_name'>{info.title}</p>
-					<p className='info_price'>
-						{info.price}
-						<span>원</span>
-					</p>
-					<p className='info_brand'>{info.brand}</p>
-				</div>
+	const bestProductItem = bestFlower.map((info, i) => (
+		<div className='info_card'>
+			<div className='info_img_box'>
+				<img src={info.src} class='info_img' width='100%' />
 			</div>
-		);
-	});
+			<div className='info_infoText'>
+				<p className='info_name'>{info.title}</p>
+				<p className='info_price'>
+					{info.price}
+					<span>원</span>
+				</p>
+				<p className='info_brand'>{info.brand}</p>
+			</div>
+		</div>
+	));
 
 	// New Arrival card
-	newFlower.map((info, i) => {
-		newFlowerItem.push(
-			<div className='info_card'>
-				<div className='info_img_box'>
-					<img src={info.src} class='info_img' width='100%' />
-				</div>
-				<div className='info_infoText'>
-					<p className='info_name'>{info.title}</p>
-					<p className='info_price'>
-						{info.price}
-						<span>원</span>
-					</p>
-					<p className='info_brand'>{info.brand}</p>
-				</div>
+	const newFlowerItem = newFlower.map((info, i) => (
+		<div className='info_card'>
+			<div className='info_img_box'>
+				<img src={info.src} class='info_img' width='100%' />
 			</div>
-		);
-	});
+			<div className='info_infoText'>
+				<p className='info_name'>{info.title}</p>
+				<p className='info_price'>
+					{info.price}
+					<span>원</span>
+				</p>
+				<p className='info_brand'>{info.brand}</p>
+			</div>
+		</div>
+	));
 
 	// Best Review card
-	bestReviewFlower.map((review, i) => {
-		bestReviewFlowerItem.push(
-			<div className='review_card'>
-				<div className='review_img_box'>
-					<img src={review.src} class='review_img' width='100%'></img>
-					<div className='review_name'>{review.title}</div>
-				</div>
-				<div className='review_text_box'>
-					<p className='review_email'>
-						{review.email}
-						<span className='rate'>
-							<img className='star' src='https://okkot.com/images/common/star_on.png'></img>5.0
-						</span>
-					</p>
-					<p className='review_content'>{review.content}</p>
-				</div>
+	const bestReviewFlowerItem = bestReviewFlower.map((review, i) => (
+		<div className='review_card'>
+			<div className='review_img_box'>
+				<img src={review.src} class='review_img' width='100%'></img>
+				<div className='review_name'>{review.title}</div>
 			</div>
-		);
-	});
+			<div className='review_text_box'>
+				<p className='review_email'>
+					{review.email}
+					<span className='rate'>
+						<img className='star' src='https://okkot.com/images/common/star_on.png'></img>5.0
+					</span>
+				</p>
+				<p className='review_content'>{review.content}</p>
+			</div>
+		</div>
+	));
 
 	// 플로리스트 추천 card
-	floristFlower.map((info, i) => {
-		floristFlowerItem.push(
-			<div className='info_card'>
-				<div className='info_img_box'>
-					<img src={info.src} class='info_img' width='100%' />
-				</div>
-				<div className='info_infoText'>
-					<p className='info_name'>{info.title}</p>
-					<p className='info_price'>
-						{info.price}
-						<span>원</span>
-					</p>
-					<p className='info_brand'>{info.brand}</p>
-				</div>
+	const floristFlowerItem = floristFlower.map((info, i) => (
+		<div className='info_card'>
+			<div className='info_img_box'>
+				<img src={info.src} class='info_img' width='100%' />
 			</div>
-		);
-	});
+			<div className='info_infoText'>
+				<p className='info_name'>{info.title}</p>
+				<p className='info_price'>
+					{info.price}
+					<span>원</span>
+				</p>
+				<p className='info_brand'>{info.brand}</p>
+			</div>
+		</div>
+	));
 
 	//
 

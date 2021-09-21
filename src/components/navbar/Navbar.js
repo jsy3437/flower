@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLogo from '../../images/mainlogo.png';
 import SearchImg from '../../images/ic-search.png';
-
+import { useHistory } from 'react-router';
 function Navbar() {
-	let [navbarMenus, setNavbarMenus] = useState(['로그인', '회원가입', '고객센터']);
+	let history = useHistory();
+	let hamburger;
 
 	// li로 변경하기
 	let categories = ['스토어', '오늘의꽃 스토리', '브랜드', '이벤트', '매거진', '포토리뷰'];
 
-	// HTML을 먼저 로드한 뒤에 함수 실행
-	window.onload = function () {
-		let hamburger = document.querySelector('.hamburger');
-		hamburger.addEventListener('click', () => {
-			hamburger.classList.toggle('active');
-		});
-	};
+	function activeToggle() {
+		hamburger = document.querySelector('.hamburger');
+		hamburger.classList.toggle('active');
+	}
 
 	return (
 		<div>
@@ -27,10 +25,20 @@ function Navbar() {
 						</div>
 						<div className='menu'>
 							<li>
-								<a>로그인</a>
+								<a
+									onClick={() => {
+										history.push('/login');
+									}}>
+									로그인
+								</a>
 							</li>
 							<li>
-								<a>회원가입</a>
+								<a
+									onClick={() => {
+										history.push('/register');
+									}}>
+									회원가입
+								</a>
 							</li>
 							<li className='service'>
 								<a>고객센터</a>
@@ -57,7 +65,11 @@ function Navbar() {
 				</div>
 				<div className='category'>
 					<div className='categoryBar'>
-						<div className='hamburger'>
+						<div
+							className='hamburger'
+							onClick={() => {
+								activeToggle();
+							}}>
 							<span></span>
 							<span></span>
 							<span></span>

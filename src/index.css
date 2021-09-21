@@ -217,7 +217,6 @@ li {
 
 input::placeholder {
 	font-weight: var(--weight-semi-bold);
-	background-color: #f6f6f6;
 }
 
 /* navbar hamburger 기본*/
@@ -512,10 +511,10 @@ li {
 	display: flex;
 	justify-content: space-between;
 	position: relative;
-	margin: 0 15px 32px 15px;
-	/* margin-bottom: 32px;
-	margin-left: 10px; */
-	padding: 10px;
+	/* margin: 0 0px 20px 30px; */
+	margin-bottom: 32px;
+	margin-left: 10px;
+	padding-left: 25px;
 }
 
 .section-warp span {
@@ -579,9 +578,13 @@ li {
 .review {
 	display: flex;
 	justify-content: space-between;
-	/* width: 1180px; */
+	width: 100%;
 	/* height: 406px; */
 	padding: 12px;
+}
+
+.info_card {
+	padding: 7px;
 }
 
 .info_img_box,
@@ -608,7 +611,7 @@ li {
 
 .info_infoText {
 	padding: 12px;
-	max-width: 270px;
+	max-width: 250px;
 }
 
 .info_name {
@@ -650,6 +653,7 @@ li {
 	height: 15px;
 	padding-left: 5px;
 	position: absolute;
+
 	top: 3px;
 	left: 0px;
 }
@@ -744,7 +748,7 @@ li {
 .footer {
 	display: flex;
 	justify-content: space-between;
-	padding: 67px 60px;
+	padding: 63px 60px;
 	max-width: 1200px;
 	min-width: 800px;
 	width: 1180px;
@@ -759,16 +763,21 @@ li {
 	font-weight: var(--weight-semi-bold);
 	color: var(--color-light-grey);
 	margin-bottom: 18px;
+	width: 100%;
+}
+
+.footer_info {
+	line-height: 25px;
 }
 
 .footer_info > li {
 	font-size: var(--font-xsmall);
-	font-weight: normal;
+	font-weight: var(--weight-semi-regular);
 	color: var(--color-light-grey);
 }
 
 .footer_guide {
-	margin-top: 50px;
+	margin-top: 40px;
 	display: flex;
 }
 
@@ -781,9 +790,7 @@ li {
 
 .footer_right {
 	text-align: end;
-}
-
-.footer_right {
+	padding-top: 30px;
 }
 
 .right_info > li {
@@ -879,8 +886,20 @@ li {
 		top: 8px;
 		right: 0;
 	}
+	.imgSlider_img > img {
+		width: 100%;
+		height: auto;
+	}
+
+	.section-warp {
+		margin-bottom: 10px;
+	}
 }
 @media screen and (max-width: 900px) {
+	.info_card {
+		max-width: 230px;
+	}
+
 	.imgSlider_img > img {
 		width: 100%;
 		height: auto;
@@ -906,7 +925,7 @@ li {
 
 	.info_card,
 	.review_card {
-		max-width: 200px;
+		max-width: 180px;
 		margin: 0.5%;
 	}
 
@@ -920,7 +939,7 @@ li {
 	}
 
 	p {
-		width: 200px;
+		width: 180px;
 	}
 
 	.info_infoText,
