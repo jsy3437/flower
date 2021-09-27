@@ -46,8 +46,17 @@ body {
 	width: 100vw;
 	height: 100vh;
 }
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: inherit;
+}
+
 .app_container {
-	margin-left: 10px;
+	margin-left: 5px;
 	text-align: center;
 	width: 100%;
 	height: 100%;
@@ -137,7 +146,6 @@ body {
 }
 
 .navbar_menu_delivery {
-	/* width: 160px; */
 	height: 22px;
 	display: flex;
 	border: 1px solid rgb(224, 223, 223);
@@ -159,9 +167,14 @@ body {
 	padding: 5px;
 }
 
+/* main logo */
+
 .main_logo > img {
 	width: 147px;
+	cursor: pointer;
 }
+
+/* category */
 
 .category {
 	display: flex;
@@ -179,16 +192,27 @@ body {
 
 .categories {
 	display: flex;
-	justify-content: space-around;
+	justify-content: start;
 	flex: 1;
-	color: var(--color-grey);
+	color: #4e4d4d;
 }
 
-.categories > ul,
-li {
+.all_category {
+	padding-left: 48px;
+	position: relative;
+	cursor: pointer;
+	width: 50px;
+	color: #4e4d4d;
+}
+
+.category_btn {
 	font-size: var(--font-medium);
 	font-weight: var(--weight-bold);
+	margin-right: calc(20% - 100px);
+	color: #4e4d4d;
 }
+
+/* search bar */
 
 .search_bar {
 	display: flex;
@@ -199,6 +223,7 @@ li {
 .searchBtn {
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .searchBar {
@@ -219,6 +244,53 @@ input::placeholder {
 	font-weight: var(--weight-semi-bold);
 }
 
+/* all category wrap */
+
+.all_category_wrap {
+	width: 744px;
+	height: 600px;
+	z-index: 998;
+	position: absolute;
+	top: 51px;
+	left: 0;
+	display: none;
+}
+
+.all_category_wrap.active {
+	display: block;
+}
+
+.wrap_area {
+	border: 1px solid #f6e9e9;
+	background-color: #ffffff;
+	width: 33.333%;
+	min-width: 248px;
+	height: 100%;
+	margin-left: -3px;
+}
+
+.wrap_area > ul {
+	padding: 12px 0;
+}
+
+.wrap_area > ul > li {
+	/* height: 60px; */
+	text-align: start;
+	word-wrap: break-word;
+}
+
+.wrap_area > ul > li > a {
+	display: block;
+	position: relative;
+	padding: 12px 28px;
+	color: #4e4d4d;
+	font-weight: var(--weight-semi-bold);
+}
+
+.wrap_area > ul > li > a:hover {
+	color: var(--color-pink);
+}
+
 /* navbar hamburger 기본*/
 
 .hamburger,
@@ -229,15 +301,17 @@ input::placeholder {
 }
 
 .hamburger {
-	position: relative;
-	width: 23px;
+	position: absolute;
+	top: 2px;
+	width: 30%;
 	height: 17px;
+	left: -9px;
 }
 
 .hamburger span {
 	position: absolute;
-	left: 0;
-	width: 100%;
+	left: 7px;
+	width: 23px;
 	height: 3px;
 	background-color: rgb(59, 59, 59);
 }
@@ -272,22 +346,32 @@ input::placeholder {
 
 .mobile_navbar {
 	display: none;
+	position: relative;
 }
 
 .mobile_navbar_menu {
-	display: none;
+	/* display: none; */
 	width: 556px;
 	height: 100%;
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: -556px;
 	z-index: 1;
 	background-color: rgb(255, 255, 255);
+	transition: all 300ms ease-in;
+}
+
+.mobile_navbar_menu.open {
+	display: block;
+	top: 0;
+	right: 0;
 }
 
 .mobile_user_login {
-	padding: 1px 16px 18px 16px;
-	text-align: start;
+	padding: 6px 16px 18px 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	font-size: var(--font-medium);
 	font-weight: var(--weight-bold);
 }
@@ -305,8 +389,7 @@ input::placeholder {
 	width: 3px;
 	height: 24px;
 	position: absolute;
-	top: 15px;
-	right: 30px;
+	top: 5px;
 }
 
 .mobile_navbar_close::after {
@@ -378,6 +461,7 @@ input::placeholder {
 .mobile_category > ul > li {
 	font-size: 16px;
 	color: var(--color-dark-grey);
+	font-weight: var(--weight-semi-bold);
 }
 
 .mobile_notice,
@@ -852,10 +936,10 @@ li {
 
 	.mobile_logo_hamburger {
 		width: 25px;
-		display: inline-block;
 		position: absolute;
 		right: 40px;
 		top: 15px;
+		display: inline-block;
 	}
 
 	.hamburger_icon {

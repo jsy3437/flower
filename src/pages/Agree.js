@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router';
+import { useParams, useHistory, useLocation } from 'react-router';
 import DaumPostcode from 'react-daum-postcode';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ import Footer from '../components/footer/footer';
 
 function Agree() {
 	let dispatch = useDispatch();
+	let location = useLocation();
 	let history = useHistory();
 	let list = ['회원선택', '약관동의', '정보입력', '가입완료'];
 	let [postcode, setPostcode] = useState(false);
@@ -16,12 +17,13 @@ function Agree() {
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [confirmPassword, setPasswordConfirm] = useState('');
+	const [confirmPassword, setConfirmPassword] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [address, setAddress] = useState('');
 	const [detailAddress, setDetailAddress] = useState('');
 
 	const REGISTER_USER = 'login_user';
+	const postAgree = location.state.result;
 
 	const activeList = list.map((li, i) => (
 		<ul>
@@ -118,8 +120,8 @@ function Agree() {
 				return setEmail(value);
 			case 'password':
 				return setPassword(value);
-			case 'passwordConfirm':
-				return setPasswordConfirm(value);
+			case 'confirmPassword':
+				return setConfirmPassword(value);
 			case 'phoneNumber':
 				return setPhoneNumber(value);
 			case 'address':
@@ -130,12 +132,16 @@ function Agree() {
 	};
 	console.log(email, 'a');
 
-	const onSubmitHandler = (e) => {
-		// e.preventDefault();
+	let test = {
+		emailTest: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
 
-		if (password !== confirmPassword) {
+		passwordTest: /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/,
+	};
+
+	const onSubmitHandler = () => {
+		if (test.passwordTest.exec(password) === null || password !== confirmPassword) {
 			return alert('항목을 정확하게 기입해주세요. * 비밀번호는 영문, 숫자, 특수문자(!@#$%^&amp;*+=)를 조합한 8자 이상이어야 합니다.');
-		} else if (email == null) {
+		} else if (test.emailTest.exec(email) === null) {
 			return alert('항목을 정확하게 기입해주세요. * 이메일은 필수사항입니다.');
 		}
 		// else if (phoneNumber == null) {
@@ -150,13 +156,13 @@ function Agree() {
 			phoneNumber: phoneNumber,
 			address: address,
 			detailAddress: detailAddress,
+			postAgree: postAgree,
 		};
-
 		console.log(body);
 
 		// dispatch(registerUser(body)).then((res) => {
 		// 	if (res.payload.success) {
-		// 		history.push('/login');
+		// 		history.push('/register/success');
 		// 	} else {
 		// 		alert('failed to sign up');
 		// 	}
@@ -220,7 +226,7 @@ function Agree() {
 						/>
 						<input
 							type='password'
-							name='passwordConfirm'
+							name='confirmPassword'
 							className='input_box password_confirm'
 							placeholder='비밀번호 확인'
 							onChange={onChangeHandler}
@@ -280,7 +286,7 @@ function Agree() {
 						type='submit'
 						onClick={() => {
 							onSubmitHandler();
-							history.push('/register/success');
+							// history.push('/register/success');
 						}}>
 						가입하기
 					</div>

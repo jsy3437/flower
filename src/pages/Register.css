@@ -192,17 +192,31 @@ body {
 	margin-top: 50px;
 }
 
+.title_container {
+	display: flex;
+	justify-content: space-between;
+}
+
 .agree_id_title {
 	font-size: var(--font-medium);
 	font-weight: var(--weight-semi-bold);
 	text-align: start;
 }
 
-.agree_option {
+.agree_option,
+.error_text {
 	font-size: 12px;
 	font-weight: var(--weight-semi-bold);
 	margin-left: 6px;
 	color: #da4d56;
+}
+
+.error_text {
+	display: none;
+}
+
+.error_text.error {
+	display: block;
 }
 
 .agree_id_text {
