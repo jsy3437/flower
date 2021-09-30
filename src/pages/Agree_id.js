@@ -25,6 +25,8 @@ function Agree_id() {
 		fee: false,
 	});
 
+	let [errorSwitch, setErrorSwitch] = useState(false);
+
 	let x = [];
 	let result = [];
 	let agree0 = [];
@@ -49,7 +51,7 @@ function Agree_id() {
 			<li key={i}>{li}</li>
 		</ul>
 	));
-
+	// let errorControl = errorSwitch === false ? 'error_text' : 'error_text error';
 	let agreeBox = agreeData.map((terms, i) => {
 		let agreeContent = agreeData[i].content.split('<br>').map((line) => (
 			<div className='agree_id_text'>
@@ -64,7 +66,7 @@ function Agree_id() {
 						{terms.title}
 						<span className='agree_option'>{terms.option}</span>
 					</div>
-					<p className='error_text'>필수 항목입니다. 동의해주세요</p>
+					<p className={errorSwitch === false ? 'error_text' : 'error_text error'}>필수 항목입니다. 동의해주세요</p>
 				</div>
 				<div className='agree_id_content'>{agreeContent}</div>
 				<label className='checkbox agree'>
@@ -85,19 +87,35 @@ function Agree_id() {
 	function checkValue() {
 		//
 		let check = document.getElementsByClassName('agree_check');
-		let query = 'input[name="essential"]:checked';
-		let errorEl = document.querySelector('error_text');
-		let essentialEl = document.querySelectorAll(query);
+		let checkedQuery = 'input[name="essential"]:checked';
+		let unCheckedQuery = 'input[name="essential"]';
+		let errorEl;
+
+		let essentialCheckedEl = document.querySelectorAll(checkedQuery);
+		let essentialEl = document.querySelectorAll(unCheckedQuery);
 		let fd = [];
 		essentialEl.forEach((el, i) => {
-			fd.push(el);
-			// console.log(fd);
-			console.log(errorEl[i]);
-			errorEl.classList.add('error');
 			if (el.checked === false) {
-				// console.log(errorEl[i]);
-				errorEl[i].classList.remove('error');
+				let copy = [...essentialAgree];
+				switch (i) {
+					case 0:
+						setEssentialAgree({ copy, register: true });
+					case 1:
+						setEssentialAgree({ copy, service: true });
+					case 2:
+						setEssentialAgree({ copy, privacy: true });
+					case 3:
+						setEssentialAgree({ copy, fee: true });
+				}
+
+				
+
+				// 체크가 안되어 있으면 해당 i의 클래스네임을 변경한다
 			}
+		});
+		essentialCheckedEl.forEach((cel, i) => {
+			fd.push(cel);
+			// console.log(fd);
 		});
 
 		if (fd.length !== 4) {
