@@ -23,7 +23,7 @@ function Agree() {
 	const [detailAddress, setDetailAddress] = useState('');
 
 	const REGISTER_USER = 'login_user';
-	const postAgree = location.state.result;
+	// const postAgree = location.state.result;
 
 	const activeList = list.map((li, i) => (
 		<ul>
@@ -156,7 +156,7 @@ function Agree() {
 			phoneNumber: phoneNumber,
 			address: address,
 			detailAddress: detailAddress,
-			postAgree: postAgree,
+			// postAgree: postAgree,
 		};
 		console.log(body);
 

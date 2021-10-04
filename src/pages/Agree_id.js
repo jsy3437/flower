@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router';
 
 import Navbar from '../components/navbar/Navbar';
@@ -19,20 +19,20 @@ function Agree_id() {
 	let [allChecked, setAllChecked] = useState(false);
 	let [essentialAgree, setEssentialAgree] = useState({
 		agreeAll: false,
-		register: false,
-		service: false,
-		privacy: false,
-		fee: false,
+		0: false,
+		1: false,
+		2: false,
+		3: false,
 	});
 
-	let [errorSwitch, setErrorSwitch] = useState(false);
+	let [nextBtnSwitch, setNextBtnSwitch] = useState(false);
 
 	let x = [];
 	let result = [];
 	let agree0 = [];
 	let agree1 = '11111111111';
 	let agree2 = '2222222222';
-	console.log(id);
+	// console.log(id);
 
 	switch (id) {
 		case '0':
@@ -51,77 +51,83 @@ function Agree_id() {
 			<li key={i}>{li}</li>
 		</ul>
 	));
+
 	// let errorControl = errorSwitch === false ? 'error_text' : 'error_text error';
-	let agreeBox = agreeData.map((terms, i) => {
-		let agreeContent = agreeData[i].content.split('<br>').map((line) => (
-			<div className='agree_id_text'>
-				{line}
-				<br />
-			</div>
-		));
-		agree0.push(
-			<div className='agree_id_box'>
-				<div className='title_container'>
-					<div className='agree_id_title'>
-						{terms.title}
-						<span className='agree_option'>{terms.option}</span>
-					</div>
-					<p className={errorSwitch === false ? 'error_text' : 'error_text error'}>필수 항목입니다. 동의해주세요</p>
+	let agreeBox = agreeData.map((terms, i) => (
+		<div className='agree_id_box'>
+			<div className='title_container'>
+				<div className='agree_id_title'>
+					{terms.title}
+					<span className='agree_option'>{terms.option}</span>
 				</div>
-				<div className='agree_id_content'>{agreeContent}</div>
-				<label className='checkbox agree'>
-					<input
-						type='checkbox'
-						className='agree_check'
-						name='essential'
-						onClick={() => {
-							removeAllClick();
-						}}
-					/>
-					<p>약관에 동의합니다.</p>
-				</label>
+				{nextBtnSwitch === true ? (
+					!essentialAgree.i ? (
+						<p className='error_text error'>필수 항목입니다. 동의해주세요</p>
+					) : null
+				) : null}
+				{/* <p >필수 항목입니다. 동의해주세요</p>
+					{다음 버튼을 눌렀느냐 안눌렀느냐
+					눌른상태이고,  !essentialAgree[i] ?
+				필수입력입니다를 띄워준다 } */}
 			</div>
-		);
-	});
+			{/* <div className='agree_id_content'>{agreeContent}</div> */}
+			<div className='agree_id_content'>{terms.content}</div>
+			<label className='checkbox agree'>
+				<input
+					type='checkbox'
+					className='agree_check'
+					name={i}
+					onClick={() => {
+						console.log(i);
+						removeAllClick();
+						onClickCheckbox(i);
+					}}
+				/>
+				<p>약관에 동의합니다.</p>
+			</label>
+		</div>
+	));
+
+	// 체크박스 클릭시 스테이트값 먼저 변경하고
+	// 다음버튼 클릭시 확인만 하고 바로 넘어가게
+	// 체크박스 name은 스테이트 객체 이름과 동일하게'
+
+	function onClickCheckbox(i) {
+		let target = 'input';
+		let checkBox = document.querySelectorAll('agree_check');
+		let clickTarget = document.querySelectorAll(checkBox.target);
+
+		// 간략하게 바꾸기
+		switch (i) {
+			case 0:
+				setEssentialAgree({ ...essentialAgree, 0: !essentialAgree[0] });
+				break;
+			case 1:
+				setEssentialAgree({ ...essentialAgree, 1: !essentialAgree[1] });
+				break;
+			case 2:
+				setEssentialAgree({ ...essentialAgree, 2: !essentialAgree[2] });
+				break;
+			case 3:
+				setEssentialAgree({ ...essentialAgree, 3: !essentialAgree[3] });
+				break;
+		}
+		console.log(essentialAgree);
+	}
 
 	function checkValue() {
 		//
+		setNextBtnSwitch(true);
 		let check = document.getElementsByClassName('agree_check');
 		let checkedQuery = 'input[name="essential"]:checked';
-		let unCheckedQuery = 'input[name="essential"]';
+
 		let errorEl;
 
 		let essentialCheckedEl = document.querySelectorAll(checkedQuery);
-		let essentialEl = document.querySelectorAll(unCheckedQuery);
-		let fd = [];
-		essentialEl.forEach((el, i) => {
-			if (el.checked === false) {
-				let copy = [...essentialAgree];
-				switch (i) {
-					case 0:
-						setEssentialAgree({ copy, register: true });
-					case 1:
-						setEssentialAgree({ copy, service: true });
-					case 2:
-						setEssentialAgree({ copy, privacy: true });
-					case 3:
-						setEssentialAgree({ copy, fee: true });
-				}
 
-				
-
-				// 체크가 안되어 있으면 해당 i의 클래스네임을 변경한다
-			}
-		});
-		essentialCheckedEl.forEach((cel, i) => {
-			fd.push(cel);
-			// console.log(fd);
-		});
-
-		if (fd.length !== 4) {
-			alert('x');
+		if (!essentialAgree[0] || !essentialAgree[1] || !essentialAgree[2] || !essentialAgree[3]) {
+			console.log();
 		} else {
-			// 수신동의 데이터
 			result = [];
 			result.push({ sms: check.smsAgree.checked });
 			result.push({ email: check.emailAgree.checked });
@@ -187,7 +193,7 @@ function Agree_id() {
 						<p>모든 약관과 sms/메일 수신에 동의합니다.</p>
 					</label>
 
-					{x}
+					{agreeBox}
 
 					<div className='agree_box sms'>
 						<div className='checkbox agree'>

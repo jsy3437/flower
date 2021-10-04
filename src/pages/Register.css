@@ -219,11 +219,6 @@ body {
 	display: block;
 }
 
-.agree_id_text {
-	font-weight: var(--weight-semi-bold);
-	color: var(--color-grey);
-}
-
 .agree_id_content {
 	border: 1px solid #b3b1b1;
 	max-width: 1180px;
@@ -234,6 +229,9 @@ body {
 	text-align: start;
 	line-height: 21px;
 	padding: 10px;
+	font-weight: var(--weight-semi-bold);
+	color: var(--color-grey);
+	white-space: pre-wrap;
 }
 
 .agree_box.sms {
