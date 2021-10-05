@@ -60,11 +60,15 @@ function Agree_id() {
 					{terms.title}
 					<span className='agree_option'>{terms.option}</span>
 				</div>
+
 				{nextBtnSwitch === true ? (
-					!essentialAgree.i ? (
+					!essentialAgree[i] ? (
 						<p className='error_text error'>필수 항목입니다. 동의해주세요</p>
-					) : null
+					) : (
+						<p className='error_text'>필수 항목입니다. 동의해주세요</p>
+					)
 				) : null}
+
 				{/* <p >필수 항목입니다. 동의해주세요</p>
 					{다음 버튼을 눌렀느냐 안눌렀느냐
 					눌른상태이고,  !essentialAgree[i] ?
