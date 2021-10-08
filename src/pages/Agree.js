@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router';
 import DaumPostcode from 'react-daum-postcode';
@@ -21,9 +21,13 @@ function Agree() {
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [address, setAddress] = useState('');
 	const [detailAddress, setDetailAddress] = useState('');
+	const [smsFlag, setSmsFlag] = useState('');
+	const [emailFlag, setEmailFlag] = useState('');
+
+	let [aa, setAa] = useState(true);
 
 	const REGISTER_USER = 'login_user';
-	// const postAgree = location.state.result;
+	const postAgree = location.state.result;
 
 	const activeList = list.map((li, i) => (
 		<ul>
@@ -31,86 +35,28 @@ function Agree() {
 		</ul>
 	));
 
-	let expressPost =
-		postcode === true ? (
-			<div>
-				<DaumPostcode />
-			</div>
-		) : null;
+	// let expressPost =
+	// 	postcode === true ? (
+	// 		<div>
+	// 			<DaumPostcode />
+	// 		</div>
+	// 	) : null;
 
-	// // 우편번호 찾기 찾기 화면을 넣을 element
-	// var element_wrap = document.getElementById('daum_post');
+	// console.log(postAgree);
+	// console.log(postAgree[0].sms);
+	// console.log(postAgree[1].email);
 
-	// function foldDaumPostcode() {
-	// 	// iframe을 넣은 element를 안보이게 한다.
-	// 	element_wrap.style.display = 'none';
-	// }
+	useEffect(() => {
+		if (aa) {
+			setSmsFlag(postAgree[0].sms ? 'Y' : 'N');
+			setEmailFlag(postAgree[1].email ? 'Y' : 'N');
+			setAa(false);
+		}
+	}, []);
 
-	// function daumpost() {
-	// 	// 현재 scroll 위치를 저장해놓는다.
-	// 	var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
-	// 	new daum.Postcode({
-	// 		oncomplete: function (data) {
-	// 			// 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-	// 			// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-	// 			// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-	// 			var addr = ''; // 주소 변수
-	// 			var extraAddr = ''; // 참고항목 변수
-
-	// 			//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-	// 			if (data.userSelectedType === 'R') {
-	// 				// 사용자가 도로명 주소를 선택했을 경우
-	// 				addr = data.roadAddress;
-	// 			} else {
-	// 				// 사용자가 지번 주소를 선택했을 경우(J)
-	// 				addr = data.jibunAddress;
-	// 			}
-
-	// 			// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-	// 			if (data.userSelectedType === 'R') {
-	// 				// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-	// 				// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-	// 				if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-	// 					extraAddr += data.bname;
-	// 				}
-	// 				// 건물명이 있고, 공동주택일 경우 추가한다.
-	// 				if (data.buildingName !== '' && data.apartment === 'Y') {
-	// 					extraAddr += extraAddr !== '' ? ', ' + data.buildingName : data.buildingName;
-	// 				}
-	// 				// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-	// 				if (extraAddr !== '') {
-	// 					extraAddr = ' (' + extraAddr + ')';
-	// 				}
-	// 				// 조합된 참고항목을 해당 필드에 넣는다.
-	// 				document.getElementById('input_box address').value = extraAddr;
-	// 			} else {
-	// 				document.getElementById('input_box address').value = '';
-	// 			}
-
-	// 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
-	// 			console.log(data.zonecode);
-	// 			document.getElementById('input_box address').value = addr;
-	// 			// 커서를 상세주소 필드로 이동한다.
-	// 			document.getElementById('input_box detail_address').focus();
-
-	// 			// iframe을 넣은 element를 안보이게 한다.
-	// 			// (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-	// 			element_wrap.style.display = 'none';
-
-	// 			// 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
-	// 			document.body.scrollTop = currentScroll;
-	// 		},
-	// 		// 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
-	// 		onresize: function (size) {
-	// 			element_wrap.style.height = size.height + 'px';
-	// 		},
-	// 		width: '100%',
-	// 		height: '100%',
-	// 	}).embed(element_wrap);
-
-	// 	// iframe을 넣은 element를 보이게 한다.
-	// 	element_wrap.style.display = 'block';
+	// {
+	// 	console.log('sms', smsFlag);
+	// 	console.log('email', emailFlag);
 	// }
 
 	const onChangeHandler = (e) => {
@@ -130,7 +76,7 @@ function Agree() {
 				return setDetailAddress(value);
 		}
 	};
-	console.log(email, 'a');
+	// console.log(email, 'a');
 
 	let test = {
 		emailTest: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
@@ -142,23 +88,29 @@ function Agree() {
 		if (test.passwordTest.exec(password) === null || password !== confirmPassword) {
 			return alert('항목을 정확하게 기입해주세요. * 비밀번호는 영문, 숫자, 특수문자(!@#$%^&amp;*+=)를 조합한 8자 이상이어야 합니다.');
 		} else if (test.emailTest.exec(email) === null) {
-			return alert('항목을 정확하게 기입해주세요. * 이메일은 필수사항입니다.');
+			return alert('항목을 정확하게 기입해주세요. * 이메일은 ex)example@exam.ple 형식이어야 합니다.');
 		}
+
 		// else if (phoneNumber == null) {
 		// 	return alert('항목을 정확하게 기입해주세요. * 핸드폰 인증은 필수사항입니다.');
 		// } else if (address || detailAddress == null) {
 		// 	return alert('항목을 정확하게 기입해주세요. * 주소는 필수사항입니다');
 		// }
 
+		let id = { useremail: email };
+
 		let body = {
-			email: email,
+			useremail: email,
 			password: password,
-			phoneNumber: phoneNumber,
-			address: address,
-			detailAddress: detailAddress,
-			// postAgree: postAgree,
+			phnumber: phoneNumber,
+			address: address + detailAddress,
+			smsflag: smsFlag,
+			emailflag: emailFlag,
 		};
-		console.log(body);
+
+		// let conformId = axios.post()
+
+		// body = JSON.stringify(body);
 
 		// dispatch(registerUser(body)).then((res) => {
 		// 	if (res.payload.success) {
@@ -167,14 +119,25 @@ function Agree() {
 		// 		alert('failed to sign up');
 		// 	}
 		// });
+		// console.log(body);
+		registerUser(body);
 	};
-	// // get test
-	// function d() {
-	// 	axios.get('http://182.228.205.27:8088/test/path-variable/{dsgdf}').then((res) => console.log(res));
-	// }
 
-	function registerUser(dataToSubmit) {
-		const request = axios.post('/api/users/register', dataToSubmit).then((res) => res.data);
+	function registerUser(body) {
+		console.log(body);
+		const request = axios
+			.post('http://211.252.26.32:8088/user', body)
+			.then((res) => {
+				console.log('res', res.data);
+				if (res.data.success === false) {
+					alert('이미 존재하는 이메일 입니다.');
+				} else {
+					history.push('/register/success');
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 
 		return {
 			type: REGISTER_USER,
@@ -286,7 +249,6 @@ function Agree() {
 						type='submit'
 						onClick={() => {
 							onSubmitHandler();
-							// history.push('/register/success');
 						}}>
 						가입하기
 					</div>

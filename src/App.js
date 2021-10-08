@@ -7,6 +7,8 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import RegisterSuccess from './pages/RegisterSuccess';
+import EmailSearchPage from './pages/EmailSearchPage';
+import PasswordSearchPage from './pages/PasswordSearchPage';
 
 function App() {
 	return (
@@ -20,6 +22,8 @@ function App() {
 					<Route exact path='/agree' component={Agree} />
 					<Route exact path='/register/success' component={RegisterSuccess} />
 					<Route exact path='/login' component={LoginPage} />
+					<Route exact path='/login/email/search' component={EmailSearchPage} />
+					<Route exact path='/login/password/search' component={PasswordSearchPage} />
 				</Switch>
 			</div>
 		</Router>

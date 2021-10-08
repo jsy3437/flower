@@ -16,7 +16,7 @@ function Agree_id() {
 		sms: false,
 		email: false,
 	});
-	let [allChecked, setAllChecked] = useState(false);
+
 	let [essentialAgree, setEssentialAgree] = useState({
 		agreeAll: false,
 		0: false,
@@ -26,13 +26,16 @@ function Agree_id() {
 	});
 
 	let [nextBtnSwitch, setNextBtnSwitch] = useState(false);
+	let [uploadSwitch, setUploadSwitch] = useState(false);
+
+	let allCheck = 'input[name="agreeAll"]';
+	let allCheckEl = document.querySelector(allCheck);
 
 	let x = [];
 	let result = [];
 	let agree0 = [];
 	let agree1 = '11111111111';
 	let agree2 = '2222222222';
-	// console.log(id);
 
 	switch (id) {
 		case '0':
@@ -52,7 +55,6 @@ function Agree_id() {
 		</ul>
 	));
 
-	// let errorControl = errorSwitch === false ? 'error_text' : 'error_text error';
 	let agreeBox = agreeData.map((terms, i) => (
 		<div className='agree_id_box'>
 			<div className='title_container'>
@@ -68,13 +70,7 @@ function Agree_id() {
 						<p className='error_text'>필수 항목입니다. 동의해주세요</p>
 					)
 				) : null}
-
-				{/* <p >필수 항목입니다. 동의해주세요</p>
-					{다음 버튼을 눌렀느냐 안눌렀느냐
-					눌른상태이고,  !essentialAgree[i] ?
-				필수입력입니다를 띄워준다 } */}
 			</div>
-			{/* <div className='agree_id_content'>{agreeContent}</div> */}
 			<div className='agree_id_content'>{terms.content}</div>
 			<label className='checkbox agree'>
 				<input
@@ -82,8 +78,7 @@ function Agree_id() {
 					className='agree_check'
 					name={i}
 					onClick={() => {
-						console.log(i);
-						removeAllClick();
+						// removeAllClick();
 						onClickCheckbox(i);
 					}}
 				/>
@@ -92,18 +87,47 @@ function Agree_id() {
 		</div>
 	));
 
+	useEffect(() => {
+		if (allCheckEl) {
+			if (
+				essentialAgree[0] === false ||
+				essentialAgree[1] === false ||
+				essentialAgree[2] === false ||
+				essentialAgree[3] === false ||
+				agreeReception.sms === false ||
+				agreeReception.email === false
+			) {
+				allCheckEl.checked = false;
+
+				setEssentialAgree({ ...essentialAgree, agreeAll: false });
+				// console.log(allCheckEl.checked);
+			} else if (
+				essentialAgree[0] === true &&
+				essentialAgree[1] === true &&
+				essentialAgree[2] === true &&
+				essentialAgree[3] === true &&
+				agreeReception.sms === true &&
+				agreeReception.email === true
+			) {
+				allCheckEl.checked = true;
+				setEssentialAgree({ ...essentialAgree, agreeAll: true });
+				// console.log(allCheckEl.checked);
+			}
+		}
+	}, [uploadSwitch]);
+
 	// 체크박스 클릭시 스테이트값 먼저 변경하고
 	// 다음버튼 클릭시 확인만 하고 바로 넘어가게
-	// 체크박스 name은 스테이트 객체 이름과 동일하게'
 
 	function onClickCheckbox(i) {
-		let target = 'input';
-		let checkBox = document.querySelectorAll('agree_check');
-		let clickTarget = document.querySelectorAll(checkBox.target);
+		let query = 'input[type="checkbox"]';
+		let checkEl = document.querySelectorAll(query);
 
 		// 간략하게 바꾸기
+
 		switch (i) {
 			case 0:
+				console.log(i);
 				setEssentialAgree({ ...essentialAgree, 0: !essentialAgree[0] });
 				break;
 			case 1:
@@ -116,11 +140,42 @@ function Agree_id() {
 				setEssentialAgree({ ...essentialAgree, 3: !essentialAgree[3] });
 				break;
 		}
-		console.log(essentialAgree);
+
+		setUploadSwitch(!uploadSwitch);
+	}
+
+	function allCheckHandler() {
+		let query = 'input[type="checkbox"]';
+		let checkEl = document.querySelectorAll(query);
+
+		checkEl.forEach((el) => {
+			if (essentialAgree.agreeAll === false) {
+				el.checked = true;
+				setEssentialAgree({
+					...essentialAgree,
+					0: true,
+					1: true,
+					2: true,
+					3: true,
+					agreeAll: true,
+				});
+				setAgreeReception({ ...agreeReception, sms: true, email: true });
+			} else {
+				el.checked = false;
+				setEssentialAgree({
+					...essentialAgree,
+					0: false,
+					1: false,
+					2: false,
+					3: false,
+					agreeAll: false,
+				});
+				setAgreeReception({ ...agreeReception, sms: false, email: false });
+			}
+		});
 	}
 
 	function checkValue() {
-		//
 		setNextBtnSwitch(true);
 		let check = document.getElementsByClassName('agree_check');
 		let checkedQuery = 'input[name="essential"]:checked';
@@ -137,40 +192,6 @@ function Agree_id() {
 			result.push({ email: check.emailAgree.checked });
 			console.log(result);
 			history.push({ pathname: '/agree', state: { result: result } });
-		}
-	}
-
-	function allCheck() {
-		let query = 'input[type="checkbox"]';
-		let checkEl = document.querySelectorAll(query);
-		checkEl.forEach((el) => {
-			if (allChecked === false) {
-				el.checked = true;
-				setAllChecked(true);
-			} else {
-				el.checked = false;
-				setAllChecked(false);
-			}
-		});
-	}
-
-	function removeAllClick() {
-		let check = document.getElementsByClassName('agree_check');
-		let query = 'input[type="checkbox"]';
-		let checkEl = document.querySelectorAll(query);
-		let trueCount = 0;
-
-		for (let i = 1; i < checkEl.length; i++) {
-			if (checkEl[i].checked === true) {
-				trueCount++;
-			}
-		}
-		if (trueCount < 6) {
-			checkEl[0].checked = false;
-			setAllChecked(false);
-		} else if (trueCount > 5) {
-			checkEl[0].checked = true;
-			setAllChecked(true);
 		}
 	}
 
@@ -191,8 +212,9 @@ function Agree_id() {
 						<input
 							type='checkbox'
 							className='agree_check all'
+							name='agreeAll'
 							onClick={() => {
-								allCheck();
+								allCheckHandler();
 							}}></input>
 						<p>모든 약관과 sms/메일 수신에 동의합니다.</p>
 					</label>
@@ -207,7 +229,8 @@ function Agree_id() {
 								name='smsAgree'
 								value=''
 								onClick={() => {
-									removeAllClick();
+									setAgreeReception({ ...agreeReception, sms: !agreeReception.sms });
+									onClickCheckbox();
 								}}
 							/>
 							<p>SMS 수신에 동의합니다.</p>
@@ -226,7 +249,8 @@ function Agree_id() {
 								name='emailAgree'
 								value=''
 								onClick={() => {
-									removeAllClick();
+									setAgreeReception({ ...agreeReception, email: !agreeReception.email });
+									onClickCheckbox();
 								}}
 							/>
 							<p>이메일 수신에 동의합니다.</p>

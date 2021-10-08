@@ -376,3 +376,103 @@ input::placeholder {
 .email_re {
 	margin-top: 60px;
 }
+
+/* login page */
+.login_container {
+	margin: 80px 39px 120px;
+	max-width: 400px;
+	margin: auto;
+	margin-bottom: 120px;
+}
+
+.login_header {
+	font-size: var(--font-xlarge);
+	font-weight: var(--weight-semi-bold);
+	padding-top: 80px;
+	text-align: start;
+}
+
+.login_comment {
+	font-weight: var(--weight-semi-bold);
+	font-size: var(--font-medium);
+	text-align: start;
+	color: var(--color-light-grey);
+	padding: 20px 0;
+}
+
+.login_container > .button.black {
+	width: 98%;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.auto_login {
+	padding: 10px;
+	text-align: start;
+	font-weight: var(--weight-semi-bold);
+	color: var(--color-grey);
+	display: flex;
+	align-items: center;
+}
+
+.remember_email {
+	margin-right: 5px;
+}
+
+.lose_info_container {
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+}
+
+.find_email {
+	width: 85px;
+	font-size: var(--font-small);
+	font-weight: var(--weight-semi-bold);
+	color: var(--color-grey);
+	text-align: end;
+}
+
+.change_password {
+	width: 130px;
+	font-weight: var(--weight-semi-bold);
+	font-size: var(--font-small);
+	color: var(--color-grey);
+	text-align: end;
+}
+
+.easy_login_container {
+	margin-top: 10px;
+}
+
+.easy_login_header {
+	font-size: var(--font-small);
+	font-weight: var(--weight-semi-bold);
+	color: var(--color-grey);
+	padding-top: 30px;
+}
+
+.icon_container {
+	display: flex;
+	justify-content: center;
+}
+
+.naver_logo {
+	width: 72px;
+	padding-bottom: 3px;
+}
+
+.kakao_logo {
+	width: 68px;
+	margin-top: 2px;
+}
+
+.find_email,
+.change_password,
+.naver_logo,
+.kakao_logo,
+.button.black,
+.auto_login,
+.remember_email {
+	cursor: pointer;
+}
