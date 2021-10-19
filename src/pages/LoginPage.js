@@ -58,7 +58,7 @@ function LoginPage() {
 	function loginUser(body) {
 		const request = axios
 			.post(
-				'http://localhost:8088/login',
+				'http://59.14.139.36:8088/login',
 				{
 					headers: {
 						Authorization: 'cors',
