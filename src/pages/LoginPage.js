@@ -44,7 +44,7 @@ function LoginPage() {
 		}
 
 		let body = {
-			username: email,
+			useremail: email,
 			password: password,
 		};
 		console.log(body);
