@@ -57,7 +57,15 @@ function LoginPage() {
 
 	function loginUser(body) {
 		const request = axios
-			.post('http://localhost:8088/login', body)
+			.post(
+				'http://localhost:8088/login',
+				{
+					headers: {
+						Authorization: 'cors',
+					},
+				},
+				body
+			)
 			.then((res) => console.log('res', res))
 			.catch((error) => console.log(error));
 	}
