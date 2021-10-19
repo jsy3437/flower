@@ -4,7 +4,7 @@ import { REGISTER_USER } from './types';
 
 // const registerInit = { register: false, user: {} };
 
-// export default function user(state = {}, action) {
+// export default function (state = {}, action) {
 // 	switch (action.type) {
 // 		case REGISTER_USER:
 // 			return { ...state, register: action.payload };
