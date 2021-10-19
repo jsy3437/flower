@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import MainLogo from '../../images/mainlogo.png';
+
 import SearchImg from '../../images/ic-search.png';
 import { useHistory } from 'react-router';
 function Navbar() {

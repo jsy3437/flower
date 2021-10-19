@@ -57,7 +57,7 @@ function LoginPage() {
 
 	function loginUser(body) {
 		const request = axios
-			.post('http://211.252.26.32:8088/user/login', body)
+			.post('http://59.14.139.36:8088/user/login', body)
 			.then((res) => console.log('res', res))
 			.catch((error) => console.log(error));
 	}

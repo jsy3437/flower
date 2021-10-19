@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useHistory, useLocation } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import DaumPostcode from 'react-daum-postcode';
-import axios from 'axios';
 
 import Navbar from '../components/navbar/Navbar';
 import Footer from '../components/footer/footer';
+import { registerUser } from '../reducer/action';
 
 function Agree() {
 	let dispatch = useDispatch();
@@ -13,7 +13,6 @@ function Agree() {
 	let history = useHistory();
 	let list = ['회원선택', '약관동의', '정보입력', '가입완료'];
 	let [postcode, setPostcode] = useState(false);
-	let daum;
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -26,7 +25,6 @@ function Agree() {
 
 	let [aa, setAa] = useState(true);
 
-	const REGISTER_USER = 'login_user';
 	const postAgree = location.state.result;
 
 	const activeList = list.map((li, i) => (
@@ -35,29 +33,14 @@ function Agree() {
 		</ul>
 	));
 
-	// let expressPost =
-	// 	postcode === true ? (
-	// 		<div>
-	// 			<DaumPostcode />
-	// 		</div>
-	// 	) : null;
-
-	// console.log(postAgree);
-	// console.log(postAgree[0].sms);
-	// console.log(postAgree[1].email);
-
 	useEffect(() => {
+		// 서버에 보낼 약관동의 데이터 가공
 		if (aa) {
 			setSmsFlag(postAgree[0].sms ? 'Y' : 'N');
 			setEmailFlag(postAgree[1].email ? 'Y' : 'N');
 			setAa(false);
 		}
 	}, []);
-
-	// {
-	// 	console.log('sms', smsFlag);
-	// 	console.log('email', emailFlag);
-	// }
 
 	const onChangeHandler = (e) => {
 		const { name, value } = e.target;
@@ -114,42 +97,20 @@ function Agree() {
 			emailflag: emailFlag,
 		};
 
-		// let conformId = axios.post()
-
-		// body = JSON.stringify(body);
-
-		// dispatch(registerUser(body)).then((res) => {
-		// 	if (res.payload.success) {
-		// 		history.push('/register/success');
-		// 	} else {
-		// 		alert('failed to sign up');
-		// 	}
-		// });
-		// console.log(body);
-		registerUser(body);
-	};
-
-	function registerUser(body) {
-		console.log(body);
-		const request = axios
-			.post('http://211.252.26.32:8088/user/join', body)
+		dispatch(registerUser(body))
 			.then((res) => {
-				console.log('res', res.data);
-				if (res.data.success === false) {
-					alert('이미 존재하는 이메일 입니다.');
-				} else {
-					history.push('/register/success');
+				if (res.payload.success) {
+					if (res.payload.success === false) {
+						alert('이미 존재하는 이메일입니다.');
+					} else {
+						history.push('/register/success');
+					}
 				}
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-
-		return {
-			type: REGISTER_USER,
-			payload: request,
-		};
-	}
+	};
 
 	return (
 		<div>
@@ -224,14 +185,12 @@ function Agree() {
 								className='button black'
 								onClick={() => {
 									setPostcode(!postcode);
-									// daumpost();
 								}}>
 								검색
 							</button>
 						</div>
 						<div className='daum_post'></div>
 
-						{/* {expressPost} */}
 						<input
 							type='text'
 							name='detailAddress'
@@ -250,12 +209,7 @@ function Agree() {
 						}}>
 						이전
 					</div>
-					<div
-						className='button black'
-						type='submit'
-						onClick={() => {
-							onSubmitHandler();
-						}}>
+					<div className='button black' type='submit' onClick={onSubmitHandler}>
 						가입하기
 					</div>
 				</div>
