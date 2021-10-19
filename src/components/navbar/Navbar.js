@@ -49,18 +49,18 @@ function Navbar() {
 								<a href='/register'>회원가입</a>
 							</li>
 							<li className='service'>
-								<a>고객센터</a>
-								<img src='https://okkot.com/images/common/top_arrow.png'></img>
+								<a href='/service'>고객센터</a>
+								<img src='https://okkot.com/images/common/top_arrow.png' alt='service'></img>
 								<div className='service_drop'>
 									<ul>
 										<li>
-											<a href=''>공지사항</a>
+											<a href='/notice'>공지사항</a>
 										</li>
 										<li>
 											<a href=''>이벤트</a>
 										</li>
 										<li>
-											<a href=''>FAQ</a>
+											<a href='/faq'>FAQ</a>
 										</li>
 									</ul>
 								</div>
@@ -200,7 +200,11 @@ function Navbar() {
 					<div className='mobile_my_page' onClick={() => {}}>
 						마이페이지
 					</div>
-					<div className='mobile_cart' onClick={() => {}}>
+					<div
+						className='mobile_cart'
+						onClick={() => {
+							history.push('/cart');
+						}}>
 						장바구니
 					</div>
 				</div>
@@ -225,17 +229,33 @@ function Navbar() {
 					</div>
 				</div>
 				<div className='mobile_user_menu'>
-					<div className='mobile_notice' onClick={() => {}}>
+					<div
+						className='mobile_notice'
+						onClick={() => {
+							history.push('/notice');
+						}}>
 						공지사항
 					</div>
-					<div className='mobile_faq' onClick={() => {}}>
+					<div
+						className='mobile_faq'
+						onClick={() => {
+							history.push('/faq');
+						}}>
 						FAQ
 					</div>
-					<div className='mobile_service' onClick={() => {}}>
+					<div
+						className='mobile_service'
+						onClick={() => {
+							history.push('/service');
+						}}>
 						고객센터
 					</div>
 				</div>
-				<div className='mobile_login_bnt' onClick={() => {}}>
+				<div
+					className='mobile_login_bnt'
+					onClick={() => {
+						history.push('/login');
+					}}>
 					로그인
 				</div>
 			</div>

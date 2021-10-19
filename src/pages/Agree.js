@@ -64,16 +64,22 @@ function Agree() {
 		switch (name) {
 			case 'email':
 				return setEmail(value);
+				break;
 			case 'password':
 				return setPassword(value);
+				break;
 			case 'confirmPassword':
 				return setConfirmPassword(value);
+				break;
 			case 'phoneNumber':
 				return setPhoneNumber(value);
+				break;
 			case 'address':
 				return setAddress(value);
+				break;
 			case 'detailAddress':
 				return setDetailAddress(value);
+				break;
 		}
 	};
 	// console.log(email, 'a');
@@ -126,7 +132,7 @@ function Agree() {
 	function registerUser(body) {
 		console.log(body);
 		const request = axios
-			.post('http://211.252.26.32:8088/user', body)
+			.post('http://211.252.26.32:8088/user/join', body)
 			.then((res) => {
 				console.log('res', res.data);
 				if (res.data.success === false) {

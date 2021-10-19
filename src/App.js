@@ -9,6 +9,10 @@ import RegisterPage from './pages/RegisterPage';
 import RegisterSuccess from './pages/RegisterSuccess';
 import EmailSearchPage from './pages/EmailSearchPage';
 import PasswordSearchPage from './pages/PasswordSearchPage';
+import Service from './pages/Service';
+import Faq from './pages/Faq';
+import Notice from './pages/Notice';
+import Cart from './pages/Cart';
 
 function App() {
 	return (
@@ -24,6 +28,10 @@ function App() {
 					<Route exact path='/login' component={LoginPage} />
 					<Route exact path='/login/email/search' component={EmailSearchPage} />
 					<Route exact path='/login/password/search' component={PasswordSearchPage} />
+					<Route exact path='/service' component={Service} />
+					<Route exact path='/notice' component={Notice} />
+					<Route exact path='/faq' component={Faq} />
+					<Route exact path='/cart' component={Cart} />
 				</Switch>
 			</div>
 		</Router>

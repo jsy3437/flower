@@ -38,57 +38,26 @@ function LoginPage() {
 	let saveChecked = 'input[name="emailRemember"]:checked';
 	let checkedEl = document.querySelectorAll(saveChecked);
 
-	// useEffect(() => {
-	// 	let cookiesGetId = browser.cookies.get('id');
-	// 	// 입력한 아이디로 변경
-	// 	if (cookiesGetId) {
-
-	// 		setGetId({ ...getId, id: email });
-	// 	} else {
-	// 	}
-
-	// 	return () => {
-	// 		cleanup;
-	// 	};
-	// }, [email, savingId]);
-
-	const onClickHandler = () => {
-		setSavingId(!savingId);
-	};
-
-	//
-	//
-	//
-
-	// function cookieSave() {
-
-	// 	setSavingId({...savingId,useremail:})
-
-	// 	console.log(checkedEl);
-	// 	if(checkedEl.checked ===true){
-	// 	let cookiesGetID = cookie.get(email)
-
-	// 	if()
-	// }
-	// }
-
 	const onsubmitHandler = () => {
 		if (test.emailTest.exec(email) === null) {
 			return alert('이메일 형식으로 기입해주세요.');
 		}
 
 		let body = {
-			useremail: email,
+			username: email,
 			password: password,
 		};
 		console.log(body);
 
 		loginUser(body);
+
+		if (checkedEl.checked === true) {
+		}
 	};
 
 	function loginUser(body) {
 		const request = axios
-			.post('http://211.252.26.32:8088/user', body)
+			.post('http://211.252.26.32:8088/user/login', body)
 			.then((res) => console.log('res', res))
 			.catch((error) => console.log(error));
 	}
@@ -115,14 +84,7 @@ function LoginPage() {
 				</div>
 				<div className='auto_login_container'>
 					<label className='auto_login'>
-						<input
-							type='checkbox'
-							className='remember_email'
-							name='emailRemember'
-							onClick={() => {
-								onClickHandler();
-							}}
-						/>
+						<input type='checkbox' className='remember_email' name='emailRemember' />
 						<p>이메일 기억하기</p>
 					</label>
 				</div>
