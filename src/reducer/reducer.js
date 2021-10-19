@@ -2,11 +2,11 @@
 
 import { REGISTER_USER } from './types';
 
-const registerInit = { register: false, user: {} };
+// const registerInit = { register: false, user: {} };
 
-// export const user = (state = { registerInit }, action) => {
+// export default function user(state = {}, action) {
 // 	switch (action.type) {
 // 		case REGISTER_USER:
 // 			return { ...state, register: action.payload };
 // 	}
-// };
+// }
