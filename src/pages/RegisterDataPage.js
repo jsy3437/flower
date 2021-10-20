@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router';
-import DaumPostcode from 'react-daum-postcode';
+// import DaumPostcode from 'react-daum-postcode';
 
-import Navbar from '../components/navbar/Navbar';
-import Footer from '../components/footer/footer';
-import { registerUser } from '../reducer/action';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { register } from '../controller/action';
 
 function Agree() {
-	let dispatch = useDispatch();
+	// let dispatch = useDispatch();
 	let location = useLocation();
 	let history = useHistory();
 	let list = ['회원선택', '약관동의', '정보입력', '가입완료'];
@@ -40,35 +40,30 @@ function Agree() {
 			setEmailFlag(postAgree[1].email ? 'Y' : 'N');
 			setAa(false);
 		}
-	}, []);
+	}, [aa, postAgree]);
 
 	const onChangeHandler = (e) => {
 		const { name, value } = e.target;
 		switch (name) {
 			case 'email':
 				return setEmail(value);
-				break;
 			case 'password':
 				return setPassword(value);
-				break;
 			case 'confirmPassword':
 				return setConfirmPassword(value);
-				break;
 			case 'phoneNumber':
 				return setPhoneNumber(value);
-				break;
 			case 'address':
 				return setAddress(value);
-				break;
 			case 'detailAddress':
 				return setDetailAddress(value);
-				break;
+			//no default
 		}
 	};
 	// console.log(email, 'a');
 
 	let test = {
-		emailTest: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
+		emailTest: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
 
 		passwordTest: /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/,
 	};
@@ -86,9 +81,8 @@ function Agree() {
 		// 	return alert('항목을 정확하게 기입해주세요. * 주소는 필수사항입니다');
 		// }
 
-		let id = { useremail: email };
-
-		let body = {
+		// let id = { useremail: email };
+		const userData = {
 			useremail: email,
 			password: password,
 			phnumber: phoneNumber,
@@ -97,19 +91,31 @@ function Agree() {
 			emailflag: emailFlag,
 		};
 
-		dispatch(registerUser(body))
+		register(userData)
 			.then((res) => {
-				if (res.payload.success) {
-					if (res.payload.success === false) {
+				if (res.data.success) {
+					if (res.data.success === false) {
 						alert('이미 존재하는 이메일입니다.');
 					} else {
 						history.push('/register/success');
 					}
 				}
 			})
-			.catch((error) => {
-				console.log(error);
-			});
+			.catch((Error) => console.log(Error));
+
+		// 	dispatch(registerUser(body))
+		// 		.then((res) => {
+		// 			if (res.payload.success) {
+		// 				if (res.payload.success === false) {
+		// 					alert('이미 존재하는 이메일입니다.');
+		// 				} else {
+		// 					history.push('/register/success');
+		// 				}
+		// 			}
+		// 		})
+		// 		.catch((error) => {
+		// 			console.log(error);
+		// 		});
 	};
 
 	return (

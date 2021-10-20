@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import Footer from '../components/footer/footer';
-import Navbar from '../components/navbar/Navbar';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 function PasswordSearchPage() {
 	let [phoneNumber, setPhoneNumber] = useState('');

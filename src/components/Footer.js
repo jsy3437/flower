@@ -27,9 +27,9 @@ function Footer() {
 						<li>평일 09:00 ~ 18:00 | 토, 일요일 휴일</li>
 					</div>
 					<div className='footer_sns'>
-						<img src='https://okkot.com/images/common/ic-insta-logo.svg' />
-						<img src='https://okkot.com/images/common/ic-kakao-logo.svg' />
-						<img src='https://okkot.com/images/common/ic-naver-logo.svg' />
+						<img src='https://okkot.com/images/common/ic-insta-logo.svg' alt='snsImg' />
+						<img src='https://okkot.com/images/common/ic-kakao-logo.svg' alt='snsImg' />
+						<img src='https://okkot.com/images/common/ic-naver-logo.svg' alt='snsImg' />
 					</div>
 				</div>
 			</div>

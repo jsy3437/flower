@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { useHistory } from 'react-router';
 import axios from 'axios';
@@ -6,18 +6,18 @@ import axios from 'axios';
 import kakaoLogo from '../images/kakaoLogo.png';
 import naverLogo from '../images/naverLogo.png';
 
-import Navbar from '../components/navbar/Navbar';
-import Footer from '../components/footer/footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function LoginPage() {
 	let history = useHistory();
 	let [email, setEmail] = useState('');
 	let [password, setPassword] = useState('');
-	let [savingId, setSavingId] = useState(false);
-	let [getId, setGetId] = useState({ id: '' });
+	// let [savingId, setSavingId] = useState(false);
+	// let [getId, setGetId] = useState({ id: '' });
 
 	let test = {
-		emailTest: /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
+		emailTest: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
 	};
 
 	const onchangeHandler = (e) => {
@@ -27,6 +27,7 @@ function LoginPage() {
 				return setEmail(value);
 			case 'password':
 				return setPassword(value);
+			// no default
 		}
 	};
 	console.log(email);
@@ -95,6 +96,7 @@ function LoginPage() {
 							<img
 								src={naverLogo}
 								className='naver_logo'
+								alt='naverLogo'
 								onClick={() => {
 									alert('준비중!');
 								}}
@@ -104,6 +106,7 @@ function LoginPage() {
 							<img
 								src={kakaoLogo}
 								className='kakao_logo'
+								alt='kakaoLogo'
 								onClick={() => {
 									alert('준비중!');
 								}}

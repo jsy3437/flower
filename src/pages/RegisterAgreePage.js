@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router';
 
-import Navbar from '../components/navbar/Navbar';
-import Footer from '../components/footer/footer';
-import agree from '../agreeIdData';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import { agreeData } from '../data/agreeIdData';
 
 function Agree_id() {
 	let { id } = useParams();
 	let history = useHistory();
+	console.log(agreeData);
 
-	let list = ['회원선택', '약관동의', '정보입력', '가입완료'];
+	let list = [
+		{ id: 0, content: '회원선택' },
+		{ id: 1, content: '약관동의' },
+		{ id: 2, content: '정보입력' },
+		{ id: 3, content: '가입완료' },
+	];
 
-	let [agreeData, setAgreeData] = useState(agree[0]);
+	let Data = agreeData[0];
 	let [agreeReception, setAgreeReception] = useState({
 		sms: false,
 		email: false,
@@ -47,16 +53,17 @@ function Agree_id() {
 		case '2':
 			x.push(agree2);
 			break;
+		//no default
 	}
 
-	const activeList = list.map((li, i) => (
-		<ul>
-			<li key={i}>{li}</li>
+	const activeList = list.map((li,i) => (
+		<ul key={i}>
+			<li >{li.content}</li>
 		</ul>
 	));
 
-	let agreeBox = agreeData.map((terms, i) => (
-		<div className='agree_id_box'>
+	let agreeBox = Data.map((terms, i) => (
+		<div className='agree_id_box' key={terms.id}>
 			<div className='title_container'>
 				<div className='agree_id_title'>
 					{terms.title}
@@ -120,8 +127,8 @@ function Agree_id() {
 	// 다음버튼 클릭시 확인만 하고 바로 넘어가게
 
 	function onClickCheckbox(i) {
-		let query = 'input[type="checkbox"]';
-		let checkEl = document.querySelectorAll(query);
+		// let query = 'input[type="checkbox"]';
+		// let checkEl = document.querySelectorAll(query);
 
 		// 간략하게 바꾸기
 
@@ -139,6 +146,7 @@ function Agree_id() {
 			case 3:
 				setEssentialAgree({ ...essentialAgree, 3: !essentialAgree[3] });
 				break;
+			// no default
 		}
 
 		setUploadSwitch(!uploadSwitch);
@@ -178,11 +186,6 @@ function Agree_id() {
 	function checkValue() {
 		setNextBtnSwitch(true);
 		let check = document.getElementsByClassName('agree_check');
-		let checkedQuery = 'input[name="essential"]:checked';
-
-		let errorEl;
-
-		let essentialCheckedEl = document.querySelectorAll(checkedQuery);
 
 		if (!essentialAgree[0] || !essentialAgree[1] || !essentialAgree[2] || !essentialAgree[3]) {
 			console.log();
@@ -227,7 +230,6 @@ function Agree_id() {
 								type='checkbox'
 								className='agree_check'
 								name='smsAgree'
-								value=''
 								onClick={() => {
 									setAgreeReception({ ...agreeReception, sms: !agreeReception.sms });
 									onClickCheckbox();
@@ -247,7 +249,6 @@ function Agree_id() {
 								type='checkbox'
 								className='agree_check'
 								name='emailAgree'
-								value=''
 								onClick={() => {
 									setAgreeReception({ ...agreeReception, email: !agreeReception.email });
 									onClickCheckbox();

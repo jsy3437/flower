@@ -1,4 +1,4 @@
-export default [
+export const newArrivalData = [
 	[
 		{
 			id: 0,

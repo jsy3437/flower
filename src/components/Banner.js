@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import banner1 from '../../images/banner1.jpg';
-import banner2 from '../../images/banner2.jpg';
-import banner3 from '../../images/banner3.jpg';
-import banner4 from '../../images/banner4.jpg';
-import banner5 from '../../images/banner5.jpg';
-import banner6 from '../../images/banner6.jpg';
+import banner1 from '../images/banner1.jpg';
+import banner2 from '../images/banner2.jpg';
+import banner3 from '../images/banner3.jpg';
+import banner4 from '../images/banner4.jpg';
+import banner5 from '../images/banner5.jpg';
+import banner6 from '../images/banner6.jpg';
 
 function Banner() {
 	// number 하나로 해서 고치기
@@ -87,7 +87,7 @@ function Banner() {
 		<div className='banner'>
 			<div className='imgSlider'>
 				<div className='imgSlider_img fade'>
-					<img src={banner[number[0]]} />
+					<img src={banner[number[0]]} alt='banner' />
 				</div>
 			</div>
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Footer from '../components/footer/footer';
-import Navbar from '../components/navbar/Navbar';
+import React from 'react';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import { useHistory } from 'react-router';
 
 function RegisterPage() {
@@ -8,6 +8,7 @@ function RegisterPage() {
 	const history = useHistory();
 	const selectItem = [
 		{
+			id: 0,
 			title: '일반회원(구매회원)',
 			content: '온라인 도매시장에서 꽃을 구매하실 모든 고객님',
 			src: 'https://okkot.com/images/common/img-member-buyer.png',
@@ -15,6 +16,7 @@ function RegisterPage() {
 		},
 
 		{
+			id: 1,
 			title: '꽃업계종사자(구매회원)',
 			content: '꽃집을 운영중이신 사장님 혹은 플로리스트',
 			src: 'https://okkot.com/images/common/img-member-retail-buyer.png',
@@ -22,6 +24,7 @@ function RegisterPage() {
 		},
 
 		{
+			id: 2,
 			title: '도매사장님(판매회원)',
 			content: '화훼농장을 운영중이시거나 도매점을 운영중이신 사장님',
 			src: 'https://okkot.com/images/common/img-member-seller.png',
@@ -36,7 +39,7 @@ function RegisterPage() {
 	));
 
 	const selectionItem = selectItem.map((item, i) => (
-		<div className='selection_card' key={i}>
+		<div className='selection_card' key={item.id}>
 			<div className='selection_img'>
 				<img src={item.src} />
 			</div>

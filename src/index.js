@@ -1,9 +1,11 @@
+/* eslint-disable */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import './pages/Register.css';
+import './Register.css';
 import { Provider } from 'react-redux';
 import rootReducer from './modules';
 import { createStore } from 'redux';

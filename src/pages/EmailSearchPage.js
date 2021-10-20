@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../components/navbar/Navbar';
-import Footer from '../components/footer/footer';
+import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function EmailSearchPage() {
 	let [phoneNumber, setPhoneNumber] = useState('');

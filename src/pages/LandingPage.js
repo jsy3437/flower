@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Navbar from '../components/navbar/Navbar';
-import Banner from '../components/banner/Banner';
-import Card from '../components/containers/Card';
-import Footer from '../components/footer/footer';
+import Navbar from '../components/Navbar';
+import Banner from '../components/Banner';
+import Card from '../components/Card';
+import Footer from '../components/Footer';
 
 function LandingPage() {
 	return (

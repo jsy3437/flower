@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import SearchImg from '../../images/ic-search.png';
+import SearchImg from '../images/ic-search.png';
 import { useHistory } from 'react-router';
 function Navbar() {
 	let history = useHistory();
@@ -9,8 +9,15 @@ function Navbar() {
 	let mobileMenu;
 
 	// li로 변경하기
-	let categories = ['스토어', '오늘의꽃 스토리', '브랜드', '이벤트', '매거진', '포토리뷰'];
-	let [openSwitch, setOpenSwitch] = useState(false);
+	// let categories = ['스토어', '오늘의꽃 스토리', '브랜드', '이벤트', '매거진', '포토리뷰'];
+	let categories = [
+		{ id: 0, content: '스토어' },
+		{ id: 1, content: '오늘의꽃 스토리' },
+		{ id: 2, content: '브랜드' },
+		{ id: 3, content: '이벤트' },
+		{ id: 4, content: '매거진' },
+		{ id: 5, content: '포토리뷰' },
+	];
 
 	function mainMenuActive() {
 		hamburger = document.querySelector('.hamburger');
@@ -19,18 +26,16 @@ function Navbar() {
 		hamburger.classList.toggle('active');
 	}
 
-	function mobileMenuOpen() {
-		setOpenSwitch(!openSwitch);
-	}
-
-	useEffect(() => {
+	function mobileMenuOpen(e) {
+		let openBtn = e.target;
 		mobileMenu = document.querySelector('.mobile_navbar_menu');
-		if (openSwitch === true) {
+
+		if (openBtn.className === 'mobile_logo_hamburger' || openBtn.className === 'hamburger_icon') {
 			mobileMenu.classList.toggle('open');
 		} else {
 			mobileMenu.classList.remove('open');
 		}
-	}, [openSwitch]);
+	}
 
 	return (
 		<div>
@@ -57,7 +62,7 @@ function Navbar() {
 											<a href='/notice'>공지사항</a>
 										</li>
 										<li>
-											<a href=''>이벤트</a>
+											<a href='/event'>이벤트</a>
 										</li>
 										<li>
 											<a href='/faq'>FAQ</a>
@@ -159,7 +164,7 @@ function Navbar() {
 					<div className='search_bar'>
 						<input className='searchBar' type='text' placeholder='상품과 브랜드를 검색해 주세요!'></input>
 						<div className='searchBtn'>
-							<img src={SearchImg} />
+							<img src={SearchImg} alt='searchImg' />
 						</div>
 					</div>
 				</div>
@@ -174,12 +179,14 @@ function Navbar() {
 								history.push('/');
 							}}
 							src='https://okkot.com/images/common/logo.v3.svg'
+							alt='logo'
 						/>
 					</div>
 					<div
 						className='mobile_logo_hamburger'
-						onClick={() => {
-							mobileMenuOpen();
+						onClick={(e) => {
+							// setOpenSwitch(!openSwitch);
+							mobileMenuOpen(e);
 						}}>
 						<div className='hamburger_icon'></div>
 					</div>
@@ -192,8 +199,9 @@ function Navbar() {
 					로그인 해주세요
 					<div
 						className='mobile_navbar_close'
-						onClick={() => {
-							mobileMenuOpen();
+						onClick={(e) => {
+							// setOpenSwitch(!openSwitch);
+							mobileMenuOpen(e);
 						}}></div>
 				</div>
 				<div className='mobile_user_menu'>
@@ -213,7 +221,7 @@ function Navbar() {
 						<div className='search_bar'>
 							<input className='searchBar' type='text' placeholder='상품과 브랜드를 검색해 주세요!'></input>
 							<div className='searchBtn'>
-								<img src={SearchImg} />
+								<img src={SearchImg} alt='searchImg' />
 							</div>
 						</div>
 					</div>
@@ -221,8 +229,8 @@ function Navbar() {
 					<div className='mobile_category'>
 						{categories.map(function (category, i) {
 							return (
-								<ul>
-									<li key={i}>{category}</li>
+								<ul key={category.id}>
+									<li>{category.content}</li>
 								</ul>
 							);
 						})}

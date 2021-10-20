@@ -98,8 +98,6 @@ a {
 	background-position-y: center;
 }
 
-
-
 .join_title {
 	font-size: 20px;
 	font-weight: var(--weight-bold);
@@ -250,7 +248,7 @@ a {
 
 .agree_id_bnt_container {
 	display: flex;
-	justify-content: end;
+	justify-content: flex-end;
 	padding-top: 24px;
 
 	border-top: 1px solid #e0dfdf;

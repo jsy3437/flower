@@ -1,15 +1,15 @@
 import React from 'react';
 import { useState } from 'react/cjs/react.development';
-import bestProductData from '../../bestProductData';
-import newArrivalData from '../../newArrivalData';
-import ReviewData from '../../bestReviewData';
-import floristData from '../../floristData';
+import { bestProductData } from '../data/flower/bestProductData';
+import { newArrivalData } from '../data/flower/newArrivalData';
+import { bestReviewData } from '../data/flower/bestReviewData';
+import { floristData } from '../data/flower/floristData';
 
 function Card() {
 	// card에 들어갈 꽃 데이터 받은 state
 	let [bestFlower, setBestFlower] = useState(bestProductData[0]);
 	let [newFlower, setNewFlower] = useState(newArrivalData[0]);
-	let [bestReviewFlower, setBestReviewFlower] = useState(ReviewData[0]);
+	let [bestReviewFlower, setBestReviewFlower] = useState(bestReviewData[0]);
 	let [floristFlower, setFloristFlower] = useState(floristData[0]);
 
 	// next, prev 버튼
@@ -17,10 +17,10 @@ function Card() {
 	// 그러면 1번 배열이 나온다
 
 	// Best Product card
-	const bestProductItem = bestFlower.map((info, i) => (
-		<div className='info_card'>
+	const bestProductItem = bestFlower.map((info) => (
+		<div className='info_card' key={info.id}>
 			<div className='info_img_box'>
-				<img src={info.src} class='info_img' width='100%' />
+				<img src={info.src} className='info_img' width='100%' alt='infoImg' />
 			</div>
 			<div className='info_infoText'>
 				<p className='info_name'>{info.title}</p>
@@ -34,10 +34,10 @@ function Card() {
 	));
 
 	// New Arrival card
-	const newFlowerItem = newFlower.map((info, i) => (
-		<div className='info_card'>
+	const newFlowerItem = newFlower.map((info) => (
+		<div className='info_card' key={info.id}>
 			<div className='info_img_box'>
-				<img src={info.src} class='info_img' width='100%' />
+				<img src={info.src} className='info_img' width='100%' alt='infoImg' />
 			</div>
 			<div className='info_infoText'>
 				<p className='info_name'>{info.title}</p>
@@ -51,17 +51,18 @@ function Card() {
 	));
 
 	// Best Review card
-	const bestReviewFlowerItem = bestReviewFlower.map((review, i) => (
-		<div className='review_card'>
+	const bestReviewFlowerItem = bestReviewFlower.map((review) => (
+		<div className='review_card' key={review.id}>
 			<div className='review_img_box'>
-				<img src={review.src} class='review_img' width='100%'></img>
+				<img src={review.src} className='review_img' width='100%' alt='infoImg' />
 				<div className='review_name'>{review.title}</div>
 			</div>
 			<div className='review_text_box'>
 				<p className='review_email'>
 					{review.email}
 					<span className='rate'>
-						<img className='star' src='https://okkot.com/images/common/star_on.png'></img>5.0
+						<img className='star' src='https://okkot.com/images/common/star_on.png' alt='star' />
+						5.0
 					</span>
 				</p>
 				<p className='review_content'>{review.content}</p>
@@ -70,10 +71,10 @@ function Card() {
 	));
 
 	// 플로리스트 추천 card
-	const floristFlowerItem = floristFlower.map((info, i) => (
-		<div className='info_card'>
+	const floristFlowerItem = floristFlower.map((info) => (
+		<div className='info_card' key={info.id}>
 			<div className='info_img_box'>
-				<img src={info.src} class='info_img' width='100%' />
+				<img src={info.src} className='info_img' width='100%' alt='infoImg' />
 			</div>
 			<div className='info_infoText'>
 				<p className='info_name'>{info.title}</p>
@@ -97,12 +98,12 @@ function Card() {
 						<span>Best Product</span>
 						<div className='bnt'>
 							<button
-								class='bnt-prev'
+								className='bnt-prev'
 								onClick={() => {
 									setBestFlower(bestProductData[0]);
 								}}></button>
 							<button
-								class='bnt-next'
+								className='bnt-next'
 								onClick={() => {
 									setBestFlower(bestProductData[1]);
 								}}></button>
@@ -119,12 +120,12 @@ function Card() {
 						<span>New Arrival</span>
 						<div className='bnt'>
 							<button
-								class='bnt-prev'
+								className='bnt-prev'
 								onClick={() => {
 									setNewFlower(newArrivalData[0]);
 								}}></button>
 							<button
-								class='bnt-next'
+								className='bnt-next'
 								onClick={() => {
 									setNewFlower(newArrivalData[1]);
 								}}></button>
@@ -137,7 +138,9 @@ function Card() {
 			{/* 쿠폰 이미지 */}
 			<img
 				className='coupon'
-				src='https://static.okkot.com/images/banner/쿠폰1-1625463353879-35759ec7-5e9a-4ef8-9a8d-9b3c8abc82d0.jpg'></img>
+				src='https://static.okkot.com/images/banner/쿠폰1-1625463353879-35759ec7-5e9a-4ef8-9a8d-9b3c8abc82d0.jpg'
+				alt='couponImg'
+			/>
 
 			{/* Best Review */}
 			<div className='bestProduct'>
@@ -146,14 +149,14 @@ function Card() {
 						<div className='section_title'>Best Review</div>
 						<div className='bnt'>
 							<button
-								class='bnt-prev'
+								className='bnt-prev'
 								onClick={() => {
-									setBestReviewFlower(ReviewData[0]);
+									setBestReviewFlower(bestReviewData[0]);
 								}}></button>
 							<button
-								class='bnt-next'
+								className='bnt-next'
 								onClick={() => {
-									setBestReviewFlower(ReviewData[1]);
+									setBestReviewFlower(bestReviewData[1]);
 								}}></button>
 						</div>
 					</div>
@@ -168,12 +171,12 @@ function Card() {
 						<span>플로리스트 추천</span>
 						<div className='bnt'>
 							<button
-								class='bnt-prev'
+								className='bnt-prev'
 								onClick={() => {
 									setFloristFlower(floristData[0]);
 								}}></button>
 							<button
-								class='bnt-next'
+								className='bnt-next'
 								onClick={() => {
 									setFloristFlower(floristData[1]);
 								}}></button>

@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router';
+import React from 'react';
+import { useHistory } from 'react-router';
 
-import Navbar from '../components/navbar/Navbar';
-import Footer from '../components/footer/footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function RegisterSuccess() {
 	let history = useHistory();
-	let list = ['회원선택', '약관동의', '정보입력', '가입완료'];
+	// let list = ['회원선택', '약관동의', '정보입력', '가입완료'];
+	let list = [
+		{ id: 0, content: '회원선택' },
+		{ id: 1, content: '약관동의' },
+		{ id: 2, content: '정보입력' },
+		{ id: 3, content: '가입완료' },
+	];
 
-	const activeList = list.map((li, i) => (
+	const activeList = list.map((li) => (
 		<ul>
-			<li key={i}>{li}</li>
+			<li key={li.id}>{li.content}</li>
 		</ul>
 	));
 
@@ -36,7 +42,7 @@ function RegisterSuccess() {
 					<div className='active_list'>{activeList}</div>
 				</div>
 
-				<img src={'https://okkot.com/images/common/img-member-buyer.png'} />
+				<img src={'https://okkot.com/images/common/img-member-buyer.png'} alt='success' />
 				<div className='register_success_text'>
 					<p>
 						joseoyun12@gmail.com로 인증메일이 발송되었습니다.
