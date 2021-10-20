@@ -93,6 +93,7 @@ function Agree() {
 
 		register(userData)
 			.then((res) => {
+				console.log(res);
 				if (res.data.success) {
 					if (res.data.success === false) {
 						alert('이미 존재하는 이메일입니다.');
