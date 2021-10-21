@@ -5,6 +5,7 @@ import axios from 'axios';
 const instance = axios.create({
 	baseURL: 'http://59.14.139.36:8088',
 	withCredentials: true,
+	Authorization: 'cos',
 });
 
 const errorMessage = () => {
@@ -13,5 +14,5 @@ const errorMessage = () => {
 };
 
 export const register = async (userData) => {
-	return await instance.post('/user/join', { headers: { Authorization: 'cos' } }, userData).catch(errorMessage);
+	return await instance.post('/user/join', userData).catch(errorMessage);
 };
