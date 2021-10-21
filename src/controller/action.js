@@ -13,5 +13,5 @@ const errorMessage = () => {
 };
 
 export const register = async (userData) => {
-	return await instance.post('/user/join', userData).catch(errorMessage);
+	return await instance.post('/user/join', { headers: { Authorization: 'cos' } }, userData).catch(errorMessage);
 };

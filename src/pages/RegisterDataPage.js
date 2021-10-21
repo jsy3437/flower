@@ -85,7 +85,7 @@ function Agree() {
 		const userData = {
 			useremail: email,
 			password: password,
-			phnumber: phoneNumber,
+			hpnumber: phoneNumber,
 			address: address + detailAddress,
 			smsflag: smsFlag,
 			emailflag: emailFlag,

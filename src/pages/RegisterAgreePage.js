@@ -56,9 +56,9 @@ function Agree_id() {
 		//no default
 	}
 
-	const activeList = list.map((li,i) => (
-		<ul key={i}>
-			<li >{li.content}</li>
+	const activeList = list.map((li) => (
+		<ul key={li.id}>
+			<li>{li.content}</li>
 		</ul>
 	));
 
