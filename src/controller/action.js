@@ -3,7 +3,7 @@ import axios from 'axios';
 // 서버에 요청하고 응답 받음
 
 const instance = axios.create({
-	proxy: 'http://59.14.139.36:8088',
+	baseURL: 'http://59.14.139.36:8088',
 	withCredentials: true,
 });
 
