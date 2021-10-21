@@ -5,7 +5,6 @@ import axios from 'axios';
 const instance = axios.create({
 	baseURL: 'http://59.14.139.36:8088',
 	withCredentials: true,
-	Authorization: 'cos',
 });
 
 const errorMessage = () => {
