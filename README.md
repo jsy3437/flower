@@ -1,13 +1,14 @@
 
-## 오늘의꽃 클론코딩
-#### React.js 기반의 프론트엔드 웹사이트
+## 오늘의꽃 
+꽃을 판매하는 온라인 쇼핑몰 클론코딩
 
 ---
 
 ## 기술 스택
 <div>
-  <img src="https://img.shields.io/badge/React-00ADD8?style=plastic&logo=React&logoColor=fff"/>
-  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E?style=plastic&logo=javascript&logoColor=fff"/>
+  <img src="https://img.shields.io/badge/React-00ADD8?style=flat-square&logo=React&logoColor=fff"/>
+  <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E?style=flat-square&logo=javascript&logoColor=fff"/>
 </div>
 
 ---
@@ -15,6 +16,7 @@
 ## 개발 환경 & 협업 툴
 - vscode
 - github
+- notion
 
 ---
 
